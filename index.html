@@ -15,24 +15,108 @@
   <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
   <meta name="msapplication-TileColor" content="#FFFFFF">
 
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.2.4/dexie.min.js"></script>
+
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
         crossorigin="anonymous">
 
+
+  <link rel="stylesheet" href="./css/main.css">
+
 </head>
+
 <body class="fullscreen">
   <div class="container">
     <h1 class="title">Hello World!</h1>
 
+    <!-- --------------------------------- -->
+    <!-- Warning message                   -->
+    <!-- --------------------------------- -->
     <div id='warning'
          class="alert alert-warning small mt-5 pt-1 pb-1 text-center"
          role="alert">
       This browser doesn't support persistent data storage
     </div>
 
+
+    <!-- --------------------------------- -->
+    <!-- First timer group                 -->
+    <!-- --------------------------------- -->
+    <div  class="w-100">
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="p-2 bd-highlight">
+          <h3 class="mb-0 fw-bold "> Sample Prep </h3>
+        </div>
+        <div class="p-2 bd-highlight">
+          <div class="form-check form-switch">
+            <input id="sample-prep-bell"
+                   class="form-check-input"
+                   type="checkbox"
+                   role="switch"
+                   name="bell">
+            <label class="form-check-label" for="sample-prep-bell">
+              <i class="mt-1 fas fa-bell"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer -->
+    <button id="countdown-0" class="alert alert-secondary w-100 rounded" role="alert">
+      <div class="d-flex justify-content-between w-100 pr-5"> <!-- rounded -->
+        <div class="p-2 bd-highlight text-start">
+          <h3 class="mb-0 fw-bold "> Mix/Dry </h3>
+          <span id="countdown-0-message"> </span>
+        </div>
+        <div class="p-2 bd-highlight">
+          <div class="countdown" id="countdown">
+            <span id="countdown-0-days" class="d-none">00</span> <span class="d-none">:</span>
+            <span id="countdown-0-hours" class="d-none">00</span> <span class="d-none">:</span>
+            <span id="countdown-0-minutes">00</span> <span>:</span>
+            <span id="countdown-0-seconds">00</span>
+          </div>
+        </div>
+      </div>
+    </button>
+
   </div>
   <script src="js/main.js"></script>
+  <script>
+
+    const createTimerHTML = function (item) {
+      var color = 'alert-secondary'
+
+      return `
+        <button id="countdown-${item.id}"
+                class="alert alert-secondary w-100 rounded" role="alert">
+          <div class="d-flex justify-content-between w-100 pr-5"> <!-- rounded -->
+            <div class="p-2 bd-highlight">
+              <h3 class="mb-0 fw-bold"> ${item.id} </h3>
+            </div>
+            <div class="p-2 bd-highlight">
+              <h3 id='countdown-${item.id}-message' mclass="mb-0 fw-bold"> </h3>
+            </div>
+            <div class="p-2 flex-grow-1 bd-highlight">
+              <div class="countdown text-end">
+                <span id="countdown-${item.id}-days" class="d-none">00</span> <span class="d-none">:</span>
+                <span id="countdown-${item.id}-hours" class="d-none">00</span> <span class="d-none">:</span>
+                <span id="countdown-${item.id}-minutes">00</span> <span>:</span>
+                <span id="countdown-${item.id}-seconds">00</span>
+              </div>
+            </div>
+          </div>
+        </button>`
+
+    }
+
+  </script>
 </body>
 </html>
