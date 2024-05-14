@@ -47,7 +47,7 @@
 
 
     <!-- --------------------------------- -->
-    <!-- First timer group                 -->
+    <!-- First Group                       -->
     <!-- --------------------------------- -->
     <div  class="w-100">
       <div class="d-flex justify-content-between w-100 pr-5">
@@ -87,35 +87,56 @@
       </div>
     </button>
 
+    <!-- --------------------------------- -->
+    <!-- Second Group                      -->
+    <!-- --------------------------------- -->
+    <div  class="w-100">
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="p-2 bd-highlight">
+          <h3 class="mb-0 fw-bold "> Heat Block </h3>
+        </div>
+        <div class="p-2 bd-highlight">
+          <div class="form-check form-switch">
+            <input id="heat-block-bell"
+                   class="form-check-input"
+                   type="checkbox"
+                   role="switch"
+                   name="bell">
+            <label class="form-check-label" for="heat-block-bell">
+              <i class="mt-1 fas fa-bell"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timers -->
+    <div id="heat-block"></div>
+
   </div>
+
+
+
   <script src="js/main.js"></script>
+
   <script>
 
-    const createTimerHTML = function (item) {
-      var color = 'alert-secondary'
+    // Local profile variable
+    var PROFILE = null
 
-      return `
-        <button id="countdown-${item.id}"
-                class="alert alert-secondary w-100 rounded" role="alert">
-          <div class="d-flex justify-content-between w-100 pr-5"> <!-- rounded -->
-            <div class="p-2 bd-highlight">
-              <h3 class="mb-0 fw-bold"> ${item.id} </h3>
-            </div>
-            <div class="p-2 bd-highlight">
-              <h3 id='countdown-${item.id}-message' mclass="mb-0 fw-bold"> </h3>
-            </div>
-            <div class="p-2 flex-grow-1 bd-highlight">
-              <div class="countdown text-end">
-                <span id="countdown-${item.id}-days" class="d-none">00</span> <span class="d-none">:</span>
-                <span id="countdown-${item.id}-hours" class="d-none">00</span> <span class="d-none">:</span>
-                <span id="countdown-${item.id}-minutes">00</span> <span>:</span>
-                <span id="countdown-${item.id}-seconds">00</span>
-              </div>
-            </div>
-          </div>
-        </button>`
+    $(document).ready(function() {
 
-    }
+      // Create database if it does not exist
+      createDatabase(reset=false).then(function(result) {
+        getProfile(1).then( function (result) {
+          // Load profile from DB
+          PROFILE = result;
+          // Populate timers
+          populateTimers();
+        })
+      })
+
+    });
 
   </script>
 </body>
