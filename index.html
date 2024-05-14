@@ -56,9 +56,14 @@
     <!-- ------------------- -->
     <div class="row mt-5 mb-4">
       <div class="d-flex justify-content-center">
-        <img src="./images/logo-2.png" width="80"/>
+        <img src="./images/hello-icon-128.png" width="80"/>
       </div>
     </div>
+
+    <a class="timer-btn-removed" value="0">Removed</a>
+    <a class="timer-btn-removed" value="1">Removed</a>
+    <a class="timer-btn-removed" value="2">Removed</a>
+    <a class="timer-btn-removed" value="3">Removed</a>
 
     <!-- --------------------------------- -->
     <!-- First Group                       -->
@@ -84,18 +89,18 @@
     </div>
 
     <!-- Timer -->
-    <button id="countdown-0" class="alert alert-secondary w-100 rounded" role="alert">
+    <button id="countdown-15" class="alert alert-secondary w-100 rounded" role="alert">
       <div class="d-flex justify-content-between w-100 pr-5"> <!-- rounded -->
         <div class="p-2 bd-highlight text-start">
           <h3 class="mb-0 fw-bold "> Mix/Dry </h3>
-          <span id="countdown-0-message"> </span>
+          <span id="countdown-15-message"> </span>
         </div>
         <div class="p-2 bd-highlight">
           <div class="countdown" id="countdown">
-            <span id="countdown-0-days" class="d-none">00</span> <span class="d-none">:</span>
-            <span id="countdown-0-hours" class="d-none">00</span> <span class="d-none">:</span>
-            <span id="countdown-0-minutes">00</span> <span>:</span>
-            <span id="countdown-0-seconds">00</span>
+            <span id="countdown-15-days" class="d-none">00</span> <span class="d-none">:</span>
+            <span id="countdown-15-hours" class="d-none">00</span> <span class="d-none">:</span>
+            <span id="countdown-15-minutes">00</span> <span>:</span>
+            <span id="countdown-15-seconds">00</span>
           </div>
         </div>
       </div>
@@ -135,8 +140,12 @@
 
   <script>
 
+    // .. note: This is to avoid querying to the database
+    //          all the time. We have a local variable and
+    //          the database will be queried less.
+
     // Local profile variable
-    var PROFILE = null
+    var PROFILE = null;
 
     $(document).ready(function() {
 

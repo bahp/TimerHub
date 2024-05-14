@@ -17,18 +17,32 @@ window.onload = () => {
   var sound3 = new Audio('./audio/mixkit-urgent-simple-tone-loop-2976.wav')
 
 
-  const DEFAULT_DATA = [
+  /*const DEFAULT_DATA = [
     { id: 1,
       name: 'default',
       config: {},
       timers: [
-        {id: 1, duration: 1, date: null},
-        {id: 2, duration: 1, date: null},
-        {id: 3, duration: 1, date: null},
-        {id: 4, duration: 1, date: null}
+        {id: 0, duration: 1, date: null, interval: null},
+        {id: 1, duration: 1, date: null, interval: null},
+        {id: 2, duration: 1, date: null, interval: null},
+        {id: 3, duration: 1, date: null, interval: null}
       ]
     },
+  ]*/
+
+  const DEFAULT_DATA = [
+    { id: 1,
+      name: 'default',
+      config: {},
+      timers: {
+        0: { name: 0, duration: 1, date: null, interval: null},
+        1: { name: 1, duration: 2, date: null, interval: null},
+        2: { name: 2, duration: 1, date: null, interval: null},
+        3: { name: 3, duration: 1, date: null, interval: null}
+      }
+    }
   ]
+
 
   // Variables
   const dbName = "db_timehub";
@@ -136,7 +150,7 @@ window.onload = () => {
         .objectStore('profiles')
         .get(key);
       request.onsuccess = function(){
-        console.log(request.result)
+        console.log("getProfile...", request.result)
         resolve(request.result);
       }
     });
@@ -150,6 +164,7 @@ window.onload = () => {
         .objectStore('profiles')
         .getAll();
       request.onsuccess = function(){
+        console.log("getAllProfiles...", request.result)
         resolve(request.result);
       }
     });
@@ -164,30 +179,59 @@ window.onload = () => {
         .objectStore('profiles')
         .put(p)
       request.onsuccess = function(){
+        console.log("updateProfile...", request.result)
         resolve(request.result);
       }
     });
   }
 
-  const createTimerHTML = function (item) {
-    var color = 'alert-secondary'
 
+  function getColor(item) {
+    if (item.date == null)
+      return 'alert-secondary'
+    // Get the current date and time
+    let now = new Date().getTime()
+    // Get the difference
+    d = diff(now, item.date)
+    // Get color
+    if (d.seconds > 50)
+      return 'alert-green'
+    else if (d.seconds <= 50)
+      return 'alert-warning'
+    else
+      return 'alert-danger'
+  }
+
+  const createTimerHTML = function (id, item) {
+    /**
+     *
+     **/
+    // Get style configuration from time
+    d = diff(new Date().getTime(), item.date)
+    var days = (d.hours || '00').toString().padStart(2, '0')
+    var hours = (d.days || '00').toString().padStart(2, '0')
+    var min = (d.minutes || '00').toString().padStart(2, '0')
+    var sec = (d.seconds || '00').toString().padStart(2, '0')
+    var color = getColor(item)
+
+    // Return
     return `
-      <button id="countdown-${item.id}"
-              class="alert alert-secondary w-100 rounded" role="alert">
+      <button id="countdown-${id}"
+              class="alert ${color} w-100 rounded" role="alert">
         <div class="d-flex justify-content-between w-100 pr-5"> <!-- rounded -->
           <div class="p-2 bd-highlight">
-            <h3 class="mb-0 fw-bold"> ${item.id} </h3>
+            <h3 class="mb-0 fw-bold"> ${id} </h3>
           </div>
           <div class="p-2 bd-highlight">
-            <h3 id='countdown-${item.id}-message' mclass="mb-0 fw-bold"> </h3>
+            <h3 id='countdown-${id}-message' mclass="mb-0 fw-bold"> </h3>
+            <!--<a id="countdown-${id}-removed" class="">Removed</a>-->
           </div>
           <div class="p-2 flex-grow-1 bd-highlight">
             <div class="countdown text-end">
-              <span id="countdown-${item.id}-days" class="d-none">00</span> <span class="d-none">:</span>
-              <span id="countdown-${item.id}-hours" class="d-none">00</span> <span class="d-none">:</span>
-              <span id="countdown-${item.id}-minutes">00</span> <span>:</span>
-              <span id="countdown-${item.id}-seconds">00</span>
+              <span id="countdown-${id}-days" class="d-none"> ${days} </span> <span class="d-none">:</span>
+              <span id="countdown-${id}-hours" class="d-none">${hours} </span> <span class="d-none">:</span>
+              <span id="countdown-${id}-minutes">${min}</span> <span>:</span>
+              <span id="countdown-${id}-seconds">${sec}</span>
             </div>
           </div>
         </div>
@@ -196,21 +240,53 @@ window.onload = () => {
 
   function populateTimers() {
     /**
+     * This function dynamically creates the timers.
      *
+     * .. note: It requires the variable PROFILE. This
+     *          variable contains one profile from the
+     *          DEFAULT_DATA.
+     *
+     *   { id: 1,
+     *     name: 'default',
+     *     config: {},
+     *     timers: {
+     *       0: { id: 0, duration: 1, date: null, interval: null},
+     *       1: { id: 1, duration: 2, date: null, interval: null},
+     *       2: { id: 2, duration: 1, date: null, interval: null},
+     *       3: { id: 3, duration: 1, date: null, interval: null}
+     *     }
+     *   }
      **/
 
+    $.each(PROFILE.timers,function(key, obj){
+      // Add timers to DOM.
+      $('#heat-block').append(createTimerHTML(key, obj))
+      // Enable click to start the timer.
+      $('#countdown-' + key).on('click', function (e) {
+        if (obj.interval == null)
+          startCountdownB(key, obj)
+      })
+      // Enable timer already running.
+      if (obj.date != null)
+        startCountdownB(key, obj)
+    });
+
+
+    /*
     PROFILE.timers.forEach((obj) => {
       // Append HTML to DOM.
       $('#heat-block').append(createTimerHTML(obj))
-      // Enable already started countdown.
+      // Enable click on timer to start
+      $('#countdown-'+obj.id).on('click', function (e) {
+        console.log(obj)
+        if (obj.interval == null)
+          startCountdownB(obj.id, obj)
+      })
+      // Enable already started timer.
       if (obj.date != null)
         startCountdownB(obj.id, obj)
-      else
-        $('#countdown-'+obj.id).on('click', function (e) {
-          console.log(obj.id, obj)
-          startCountdownB(obj.id, obj)
-        })
-    })
+
+    })*/
 
   }
 
@@ -219,105 +295,181 @@ window.onload = () => {
   }
 
 
-   function startCountdownB(id, obj) {
+  function diff(d1, d2) {
+    /**
+     *
+     * @type {number}
+     */
+    if ((d1==null) || (d2==null))
+      return {
+      'days': null,
+      'hours': null,
+      'minutes': null,
+      'seconds': null
+    }
+    console.log('diff', d1, d2)
+    // Calculate distance
+    let distance = d2 - d1;
+    return {
+      'days': Math.floor(distance / (1000 * 60 * 60 * 24)),
+      'hours': Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      'minutes': Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+      'seconds': Math.floor((distance % (1000 * 60)) / 1000)
+    }
+  }
+
+  function startCountdownB(id, obj) {
+    /**
+     *
+     */
+
+    console.log("Startcountdown...", obj)
+
+    if (obj.date == null) {
+      obj.date = addMinutes(new Date(), obj.duration).getTime();
+    }
+
+    // Get element
+    let elm = $('#countdown-' + id)
 
 
-      console.log("Startcountdown...", obj)
+    // Change color to green
+    elm.addClass('alert-success')
 
-      if (obj.date == null)
-        obj.date = addMinutes(new Date(), 1).getTime();
-
-      // Get element
-      let elm = $('#countdown-' + obj.id)
+    // Show the countdown clock
+    //elm.style.display = "flex";
 
 
-      // Change color to green
-      elm.addClass('alert-success')
+    updateProfile(PROFILE)
 
-      // Show the countdown clock
-      //elm.style.display = "flex";
-      //elm
 
-      // Get the date and time set by the user
-      //countdownDate[id] = addMinutes(new Date(), 1).getTime();
-
-      //countdownDate[obj.id]
+    // Update the countdown every 1 second
+    var interval = setInterval(function() {
 
       console.log(obj)
-      console.log(PROFILE)
+      /*if (obj.date == null) {
+        console.log("Cleaning interval...", obj)
+        clearInterval(interval)
+        return
+      }*/
 
-      //console.log("Starting countdown...", id)
-      //console.log(profile)
-      //console.log(profile.timers)
-      //console.log(profile.timers[parseInt(id)])
-      //profile.timers[parseInt(id)-1].date = countdownDate[id]
+      // Get the current date and time
+      //let now = new Date().getTime()
+
+      // Calculate distance
+      //let distance = obj.date - now;
+
+      // .. note:: We have added a dirty offset of one second because the
+      //           second number 59 was being always missed. This is probably
+      //           caused because it takes around a second to run the setInterval.
+
+      // Calculate days, hours, minutes and seconds
+      //let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      //let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      //let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      //let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+       // Get the current date and time
+      let now = new Date().getTime()
+
+     // Calculate distance
+      //slet distance = obj.date - now;
+
+      d = diff(now, obj.date)
+
+      console.log(d)
+
+      // Display the result
+      $("countdown-"+id+"-days").innerHTML = d.days.toString().padStart(2, '0');
+      $("countdown-"+id+"-hours").innerHTML = d.hours.toString().padStart(2, '0');
+      $("countdown-"+id+"-minutes").innerHTML = d.minutes.toString().padStart(2, '0');
+      $("countdown-"+id+"-seconds").innerHTML = d.seconds.toString().padStart(2, '0');
+
+      if (d.seconds <= 50) {
+        if (elm.hasClass('alert-success')) {
+          elm.removeClass('alert-success')
+          elm.addClass('alert-warning')
+          sound1.play()
+        }
+      }
+
+      if (d.seconds <= 30) {
+        if (elm.hasClass('alert-warning')) {
+          $('#countdown-' + id).removeClass('alert-warning')
+          $('#countdown-' + id).addClass('alert-danger')
+          sound2.play()
+        }
+      }
+
+      if (d.distance < 0) {
+        if (!elm.hasClass('expired')) {
+          $('#countdown-' + id).addClass('expired')
+          $('#countdown-' + id + '-message').text('Remove')
+          sound3.play()
+        }
+      }
+
+      /*
+      // If the countdown is over, display a message
+      if (distance < 50*1000) {
+        console.log("Change!")
+        if ($('#countdown-'+id).hasClass('alert-red')) {
+          $('#countdown-' + id).removeClass('alert-red')
+          $('#countdown-' + id).addClass('alert-green')
+        }
+        //clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }*/
+    }, 1000);
+
+
+      PROFILE.timers[id].interval = interval
+  }
+
+  $('.timer-btn-removed').on('click', function (e) {
+     /**
+      * All the required actions to reset a timer.
+      *
+      */
+      // Get the id
+      let id = parseInt($(this).attr('value'))
+      console.log($(this).attr('value'))
+      console.log(PROFILE.timers[id])
+
+      // Stop the timer
+      clearInterval(PROFILE.timers[id].interval)
+      PROFILE.timers[id].date = null
+      PROFILE.timers[id].interval = null
       updateProfile(PROFILE)
 
+      // Reset the style to default timer
+      var obj = $('#countdown-' + id)
+      obj.removeClass('alert-danger')
+      obj.removeClass('alert-warning')
+      obj.removeClass('alert-success')
+      obj.addClass('alert-secondary')
 
-      // Update the countdown every 1 second
-      var interval = setInterval(function() {
+      // Reset message and set the counter to zero.
+      $('#countdown-' + id + '-message').html('')
+      $('#countdown-' + id + '-minutes').html('00')
+      $('#countdown-' + id + '-seconds').html('00')
+   })
 
-        if (obj.date == null) {
-          clearInterval(interval)
-          return
-        }
 
-        // Get the current date and time
-        let now = new Date().getTime()
+  $('#countdown-1-removed').attr('value')
 
-        // Calculate distance
-        let distance = obj.date - now;
 
-        // .. note:: We have added a dirty offset of one second because the
-        //           second number 59 was being always missed. This is probably
-        //           caused because it takes around a second to run the setInterval.
-
-        // Calculate days, hours, minutes and seconds
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result
-        document.getElementById("countdown-"+id+"-days").innerHTML = days.toString().padStart(2, '0');
-        document.getElementById("countdown-"+id+"-hours").innerHTML = hours.toString().padStart(2, '0');
-        document.getElementById("countdown-"+id+"-minutes").innerHTML = minutes.toString().padStart(2, '0');
-        document.getElementById("countdown-"+id+"-seconds").innerHTML = seconds.toString().padStart(2, '0');
-
-        if (seconds <= 50) {
-          if (elm.hasClass('alert-success')) {
-            elm.removeClass('alert-success')
-            elm.addClass('alert-warning')
-            sound1.play()
-          }
-        }
-
-        if (seconds <= 30) {
-          if (elm.hasClass('alert-warning')) {
-            $('#countdown-' + id).removeClass('alert-warning')
-            $('#countdown-' + id).addClass('alert-danger')
-            sound2.play()
-          }
-        }
-
-        if (distance < 0) {
-          if (!elm.hasClass('expired')) {
-            $('#countdown-' + id).addClass('expired')
-            $('#countdown-' + id + '-message').text('Remove')
-            sound3.play()
-          }
-        }
-
-        /*
-        // If the countdown is over, display a message
-        if (distance < 50*1000) {
-          console.log("Change!")
-          if ($('#countdown-'+id).hasClass('alert-red')) {
-            $('#countdown-' + id).removeClass('alert-red')
-            $('#countdown-' + id).addClass('alert-green')
-          }
-          //clearInterval(x);
-          document.getElementById("countdown").innerHTML = "EXPIRED";
-        }*/
-      }, 100);
-    }
+  function test() {
+    getProfile('default').then(function(result) {
+      console.log("Retrieved:", result)
+    })
+    getProfile(0).then(function(result) {
+      console.log("Retrieved:", result)
+    })
+    getProfile(1).then(function(result) {
+      console.log("Retrieved:", result)
+    })
+    getAllProfiles().then(function(result) {
+      console.log("Retrieved:", result)
+    })
+  }
