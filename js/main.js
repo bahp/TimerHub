@@ -11,6 +11,12 @@ window.onload = () => {
   // -----------------------------------------------------------
   // Constants
   // -----------------------------------------------------------
+  // Sounds
+  var sound1 = new Audio('./audio/mixkit-clear-announce-tones-2861.wav')
+  var sound2 = new Audio('./audio/mixkit-happy-bells-notification-937.wav')
+  var sound3 = new Audio('./audio/mixkit-urgent-simple-tone-loop-2976.wav')
+
+
   const DEFAULT_DATA = [
     { id: 1,
       name: 'default',
