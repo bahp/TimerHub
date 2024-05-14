@@ -3,7 +3,10 @@ var filesToCache = [
   '/',
   '/index.html',
   '/css/style.css',
-  '/js/main.js'
+  '/js/main.js',
+  '/audio/mixkit-clear-announce-tones-2861.wav',
+  '/audio/mixkit-happy-bells-notification-937.wav',
+  '/audio/mixkit-urgent-simple-tone-loop-2976.wav'
 ];
 
 /* Start the service worker and cache all of the app's content */
