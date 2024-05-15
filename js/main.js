@@ -307,7 +307,6 @@ window.onload = () => {
       'minutes': null,
       'seconds': null
     }
-    console.log('diff', d1, d2)
     // Calculate distance
     let distance = d2 - d1;
     return {
@@ -323,7 +322,7 @@ window.onload = () => {
      *
      */
 
-    console.log("Startcountdown...", obj)
+    //console.log("Startcountdown...", obj)
 
     if (obj.date == null) {
       obj.date = addMinutes(new Date(), obj.duration).getTime();
@@ -346,7 +345,7 @@ window.onload = () => {
     // Update the countdown every 1 second
     var interval = setInterval(function() {
 
-      console.log(obj)
+      //console.log(obj)
       /*if (obj.date == null) {
         console.log("Cleaning interval...", obj)
         clearInterval(interval)
@@ -377,13 +376,13 @@ window.onload = () => {
 
       d = diff(now, obj.date)
 
-      console.log(d)
+      //console.log(d)
 
       // Display the result
-      $("countdown-"+id+"-days").innerHTML = d.days.toString().padStart(2, '0');
-      $("countdown-"+id+"-hours").innerHTML = d.hours.toString().padStart(2, '0');
-      $("countdown-"+id+"-minutes").innerHTML = d.minutes.toString().padStart(2, '0');
-      $("countdown-"+id+"-seconds").innerHTML = d.seconds.toString().padStart(2, '0');
+      $("#countdown-"+id+"-days").html(d.days.toString().padStart(2, '0'));
+      $("#countdown-"+id+"-hours").html(d.hours.toString().padStart(2, '0'));
+      $("#countdown-"+id+"-minutes").html(d.minutes.toString().padStart(2, '0'));
+      $("#countdown-"+id+"-seconds").html(d.seconds.toString().padStart(2, '0'));
 
       if (d.seconds <= 50) {
         if (elm.hasClass('alert-success')) {
@@ -472,4 +471,39 @@ window.onload = () => {
     getAllProfiles().then(function(result) {
       console.log("Retrieved:", result)
     })
+  }
+
+
+  function getSecondsFromNow(d) {
+    return moment().diff(moment(d), 'seconds')
+  }
+
+  function run(id) {
+    var d = 1715713158263
+    PROFILE.timers[id].date = d
+    var t = setTimer(id, PROFILE.timers[0])
+  }
+
+  function setTimer(id, obj) {
+    /**
+     *
+     */
+    // Get seconds from start
+    var s = getSecondsFromNow(obj.date)
+
+    // Create timer and start
+    timer = new Timer()
+    timer.start({
+      precision: 'seconds',
+      startValues: {seconds: s},
+      //target: {seconds: 10000}
+    });
+
+    // Handle events
+    timer.addEventListener('secondsUpdated', function (e) {
+      console.log(timer.getTimeValues().toString())
+      $('#countdown-15-timer').html(timer.getTimeValues().toString())
+    });
+
+    return timer
   }

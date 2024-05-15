@@ -1,19 +1,30 @@
 # TimerHub
-The classic Hello World program as a Progressive Web App
 
-![Hello World Screenshot](./screenshot.jpg "Hello World Screenshot")
+Welcome to Timerify, a Progressive Web App (PWA) designed to provide 
+a collection of timers for various purposes. This app aims to enhance 
+productivity, time management, and daily routines by offering 
+customizable timers accessible across different devices.
 
-## What It Is
 
-A simple PWA demo that displays the text "Hello, World!" utilizing an app manifest, service workers and caching. This demo is written in plain-vanilla HTML, CSS and Javascript (ES6). It has no dependencies.
+## Limitations
 
-I've also written a tutorial to go along with the code. Read it on Medium:
+ - iOS Sound Compatibility: Currently, there are reported issues 
+   with sound functionality on iOS devices. 
 
-https://medium.com/james-johnson/a-simple-progressive-web-app-tutorial-f9708e5f2605
+ - User Interaction for Sound Playback: There needs to be user interaction
+   before the app is allowed to play sounds.
+
+ - Offline Functionality: While PWAs theoretically work offline, there are 
+   uncertainties regarding the app's behavior in scenarios such as device 
+   resets or prolonged loss of internet connectivity. Further research is 
+   needed to understand and address potential challenges in maintaining 
+   functionality during offline periods.
+
 
 ## Demo
 
-https://jamesjohnson280.github.io/hello-pwa/
+https://bahp.github.io/timerhub/
+
 
 ## Browser Compatibility
 
@@ -23,3 +34,23 @@ Hello PWA has been tested in the following browsers:
 * Firefox 60
 * Safari 11
 * Edge 42
+
+<!--
+Contributing:
+Your contributions are welcome! Whether it's fixing bugs, adding new 
+features, or providing feedback, we appreciate your support in making 
+Timerify better for everyone. Please refer to the CONTRIBUTING.md file 
+for guidelines on how to contribute.
+-->
+
+## Feedback and Support
+If you encounter any issues, have suggestions for improvements, or need 
+assistance, don't hesitate to reach out. You can submit bug reports, 
+feature requests, or general inquiries through our GitHub Issues page. 
+Your feedback helps us prioritize enhancements and address concerns 
+effectively.
+
+## License
+Timerify is licensed under the MIT License. Feel free to use, modify, 
+and distribute the app in accordance with the terms specified in the 
+license agreement.
