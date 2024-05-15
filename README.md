@@ -8,15 +8,15 @@ customizable timers accessible across different devices.
 
 ## Limitations
 
- - iOS Sound Compatibility: Currently, there are reported issues 
-   with sound functionality on iOS devices. 
+ - iOS Sound Compatibility: There are reported issues 
+   with sound functionality for PWA apps on iOS devices. 
 
  - User Interaction for Sound Playback: There needs to be user interaction
    before the app is allowed to play sounds.
 
  - Offline Functionality: While PWAs theoretically work offline, there are 
    uncertainties regarding the app's behavior in scenarios such as device 
-   resets or prolonged loss of internet connectivity. Further research is 
+   resets or prolonged period of internet connectivity. Further research is 
    needed to understand and address potential challenges in maintaining 
    functionality during offline periods.
 
