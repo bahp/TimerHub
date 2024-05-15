@@ -28,6 +28,13 @@ https://bahp.github.io/timerhub/
 
 ## Browser Compatibility
 
+TimerHub has been tested in the following browsers:
+
+*
+*
+*
+*
+
 <!--
 Hello PWA has been tested in the following browsers:
 
@@ -51,7 +58,9 @@ feature requests, or general inquiries through our GitHub Issues page.
 Your feedback helps us prioritize enhancements and address concerns 
 effectively.
 
+<!--
 ## License
 Timerify is licensed under the MIT License. Feel free to use, modify, 
 and distribute the app in accordance with the terms specified in the 
 license agreement.
+-->
