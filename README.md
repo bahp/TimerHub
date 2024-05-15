@@ -28,13 +28,14 @@ https://bahp.github.io/timerhub/
 
 ## Browser Compatibility
 
+<!--
 Hello PWA has been tested in the following browsers:
 
 * Chrome 67 (Windows and Android)
 * Firefox 60
 * Safari 11
 * Edge 42
-
+-->
 <!--
 Contributing:
 Your contributions are welcome! Whether it's fixing bugs, adding new 
