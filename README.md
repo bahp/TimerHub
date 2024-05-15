@@ -5,6 +5,31 @@ a collection of timers for various purposes. This app aims to enhance
 productivity, time management, and daily routines by offering 
 customizable timers accessible across different devices.
 
+## Demo
+
+https://bahp.github.io/timerhub/
+
+## Adding TimerHUB to home screen
+
+### iOS (iPhone/iPad)
+   
+- Open TimeHub in browser. 
+- Share and Add to Home Screen:
+    - Tap the share icon located at the bottom center of the screen.
+    - Scroll down and select "Add to Home Screen".
+    - Customize the app name if desired, then tap "Add" in the upper-right corner.
+- Access TimerHUB: TimerHub will now appear as an icon on your home screen for 
+  easy access. Simply tap the icon to open the app whenever you need it.
+
+## Android:
+- Open TimerHube in browser.
+- Options and Set to Home Screen:
+    - Tap the options menu (typically represented by three dots) located at the top 
+      right of the browser window.
+    - Select "Add to Home Screen" or "Set to Home Screen", depending on your browser.
+    - Confirm the action by tapping "Add" or "Add to Home".
+- Access TimerHub TimerHub will now be added to your home screen as an app shortcut. 
+  Tap the icon to launch the app whenever you need to use it.
 
 ## Limitations
 
@@ -19,11 +44,6 @@ customizable timers accessible across different devices.
    resets or prolonged period of internet connectivity. Further research is 
    needed to understand and address potential challenges in maintaining 
    functionality during offline periods.
-
-
-## Demo
-
-https://bahp.github.io/timerhub/
 
 
 ## Browser Compatibility
@@ -50,6 +70,7 @@ features, or providing feedback, we appreciate your support in making
 Timerify better for everyone. Please refer to the CONTRIBUTING.md file 
 for guidelines on how to contribute.
 -->
+
 
 ## Feedback and Support
 If you encounter any issues, have suggestions for improvements, or need 
