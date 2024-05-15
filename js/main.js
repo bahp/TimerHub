@@ -196,7 +196,7 @@ window.onload = () => {
     // Get color
     if (d.seconds > 50)
       return 'alert-green'
-    else if (d.seconds <= 50)
+    else if ((d.seconds <= 50) & (d.seconds > 30))
       return 'alert-warning'
     else
       return 'alert-danger'
