@@ -419,7 +419,7 @@ window.onload = () => {
         //clearInterval(x);
         document.getElementById("countdown").innerHTML = "EXPIRED";
       }*/
-    }, 1000);
+    }, 200);
 
 
       PROFILE.timers[id].interval = interval
