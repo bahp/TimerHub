@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> TimerHUB </title>
+
+  <!--
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hello World">
+  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  -->
+
+  <!--
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.2.4/dexie.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easytimer@1.1.3/src/easytimer.min.js"></script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!--
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
+  -->
+
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"/>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css"/>
+
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/moment-2.29.1.min.js"></script>
+  <script src="./js/bootstrap-5.3.0.min.js"></script>
+  <script src="./js/dexie-3.2.4.min.js"></script>
+  <script src="./js/easytimer-1.1.3.min.js"></script>
+
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!--
+  <link rel="stylesheet" href="./css/main.css">
+  -->
+  <link rel="stylesheet" href="./css/pdx.css">
+  <!--<link rel="stylesheet" href="css/style.css">-->
+
+  <title> TimerHub </title>
+
+</head>
+
+<body> <!-- class=@fullscreen> -->
+
+  <!--
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header d-flex w-100">
+        <div class="flex-grow-1 align-items-start">
+          <a class="navbar-brand" href="#">
+            <i class="mt-1 fas fa-bell fa-2x" area-hidden="true"></i>
+          </a>
+        </div>
+        <div class="flex-grow-1 align-items-end">
+          <a class="navbar-brand gear" href="#">
+            <i class="mt-1 fas fa-bell fa-2x" area-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  -->
+
+
+  <div class="container">
+
+    <!-- --------------------------------- -->
+    <!-- Warning message                   -->
+    <!-- --------------------------------- -->
+    <div id='warning'
+         class="alert alert-warning small mt-5 pt-1 pb-1 text-center d-none"
+         role="alert">
+      This browser doesn't support persistent data storage
+    </div>
+
+
+    <!--
+    <div class="row">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+      <i class="fa fa-camera-retro"></i> fa-camera-retro
+      <i class="bi bi-gear"></i>
+      <i class="fa-solid fa-gear"></i>
+      <i class="mt-1 fas fa-cog"></i>
+    </div>
+    -->
+
+    <!-- ------------------- -->
+    <!-- Logo                -->
+    <!-- ------------------- -->
+    <!--<div class="row mt-5 mb-4">
+      <div class="d-flex justify-content-center">
+        <img src="./images/logo-pdx.svg" width="300"/>
+      </div>
+    </div>
+    -->
+
+    <!--
+    <i class="mt-1 fas fa-bell"></i>
+    <div class="faq">
+      <i class="mt-1 fas fa-bell fa-3x" area-hidden="true"></i>
+    </div>
+    <div class="settings">
+      <i class="mt-1 fas fa-bell fa-3x" area-hidden="true"></i>
+    </div>
+    -->
+
+    <!--
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="...">
+      </a>
+    </div>
+  </div>
+</nav>
+
+-->
+    <!-- ----------------- -->
+    <!-- Navigation bar    -->
+    <!-- ----------------- -->
+    <div class="row p-2 pt-4">
+      <div class="d-flex">
+        <div class="flex-grow-1 text-start">
+          <a class="icon-faq" href="#">
+            <i class="fas fa-bell fa-2x"></i>
+          </a>
+        </div>
+        <div class="flex-grow-1 text-end">
+          <a class="icon-gear" href="#">
+            <i class="fas fa-bell fa-2x"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------- -->
+    <!-- Logo              -->
+    <!-- ----------------- -->
+    <div class="row mb-5">
+      <div class="d-flex justify-content-center">
+        <img src="./images/logo-pdx.svg" width="250">
+      </div>
+    </div>
+
+
+    <!-- --------------------------------- -->
+    <!-- First Group                       -->
+    <!-- --------------------------------- -->
+    <!-- Label -->
+    <div class="w-100">
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="p-2 bd-highlight">
+          <h3 class="pdx-title mb-0"> Sample Preparation</h3>
+        </div>
+        <div class="p-2 bd-highlight">
+          <div class="form-check form-switch">
+            <input id="sample-prep-bell"
+                   class="form-check-input"
+                   type="checkbox"
+                   role="switch"
+                   name="bell">
+            <label class="form-check-label" for="sample-prep-bell">
+              <i class="mt-1 fas fa-bell"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ----------------- -->
+    <!-- Mix/Dry           -->
+    <!-- ----------------- -->
+    <button id="timer-btn-0" type="button"
+            class="btn btn-idle rounded-5 w-100 mb-2 mt-2">
+
+      <!-- header -->
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="pdx-timer-id d-none"></div>
+        <div class="pdx-timer-label"> Mix/Dry </div>
+        <div class="pdx-timer-clock flex-grow-1">
+          00:00
+        </div>
+      </div>
+
+    </button>
+
+
+    <!-- --------------------------------- -->
+    <!-- Second Group                      -->
+    <!-- --------------------------------- -->
+    <div class="w-100 mt-5">
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="p-2 bd-highlight pdx-title">
+          Heat Block
+        </div>
+        <div class="p-2 bd-highlight">
+          <div class="form-check form-switch">
+            <input id="heat-block-bell"
+                   class="form-check-input"
+                   type="checkbox"
+                   role="switch"
+                   name="bell">
+            <label class="form-check-label" for="heat-block-bell">
+              <i class="mt-1 fas fa-bell"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="heat-block">
+
+      <!-- ----------------- -->
+      <!-- Timer 1           -->
+      <!-- ----------------- -->
+
+      <button id="timer-btn-1" type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-1"
+              aria-expanded="false" aria-controls="collapse-1">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 1 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-1">
+          <div class="text-start pt-2 pb-2">
+            <span class="fw-bold">Caution:</span>
+            <span></span>
+          </div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <!-- ----------------- -->
+      <!-- Timer 2           -->
+      <!-- ----------------- -->
+      <button id="timer-btn-2" type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-2"
+              aria-expanded="false" aria-controls="collapse-2">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 2 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-2">
+          <div class="text-start pt-2 pb-2">
+            <span class="fw-bold">Caution:</span>
+            <span></span>
+          </div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+
+
+      <!-- ----------------- -->
+      <!-- Timer 3           -->
+      <!-- ----------------- -->
+      <button id="timer-btn-3" type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-3"
+              aria-expanded="false" aria-controls="collapse-3">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 3 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-3">
+          <div class="text-start pt-2 pb-2">
+            <span class="fw-bold">Caution:</span>
+            <span></span>
+          </div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+
+
+      <!-- ----------------- -->
+      <!-- Timer 4           -->
+      <!-- ----------------- -->
+      <div id="wrapper">
+      <button id="timer-btn-4" type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-4"
+              aria-expanded="false" aria-controls="collapse-4">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 4 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-4">
+          <div class="text-start pt-2 pb-2">
+            <span class="fw-bold">Caution:</span>
+            <span></span>
+          </div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+      </div>
+
+    </div> <!-- Heat Block -->
+
+  </div> <!-- Container -->
+
+
+  <script src="js/main.js"></script>
+
+  <script>
+
+
+
+
+    /*
+
+      let timer = new Timer();
+      timer.start({callback: function (timer) {
+        $('#timer-btn-'+ id + ' .pdx-timer-clock').html(
+            timer.getTimeValues().toString(['minutes', 'seconds'])
+        );
+      }});
+    }*/
+
+
+    function prepend(value, array) {
+      var newArray = array.slice();
+      newArray.unshift(value);
+      return newArray;
+    }
+
+    function timeFormat(timer) {
+      //if (timer.minutes > 0)
+      //    return ['minutes', 'seconds']
+      if (timer.hours > 0)
+          return ['hours', 'minutes', 'seconds']
+      if (timer.days > 0)
+          return ['days', 'hours', 'minutes', 'seconds']
+      return ['minutes', 'seconds']
+    }
+
+    function behaviour1(id) {
+      /**
+       * Counts down until it is done and then keeps the 00:00
+       * value. If clicked while counting it does nothing. If
+       * clicked while reached 00:00 starts again.
+       **/
+      // Add timer to variable
+      var timer = new Timer()
+      AUX[id] = timer
+      // Create tag
+      var tag = '#timer-btn-' + id
+
+      // Configure click
+      $(tag).on( "click", function( event ) {
+        $(tag).removeClass('btn-idle')
+        $(tag).addClass('btn-success')
+
+        if (!AUX[id].isRunning()) {
+          timer.start({
+            countdown: true,
+            startValues: { seconds: 60 },
+            callback: function (timer) {
+              $('#timer-btn-' + id + ' .pdx-timer-clock').html(
+                timer.toString(timeFormat(timer))
+              );
+              if (timer.seconds == 0) {
+                $(tag).removeClass('btn-success')
+                $(tag).addClass('btn-idle')
+              }
+            }
+          });
+        }
+      });
+    }
+
+    function behaviour2(id) {
+      /**
+       * Counts from zero until infinity. It adds a + before
+       * the time; that is, +00:25.
+       *
+       * .. note: Ask whether it should allow to show hours,
+       *          otherwise users won't know if more than an
+       *          hour has passed.
+       **/
+     // Add timer to variable
+      var timer = new Timer()
+      AUX[id] = timer
+      // Create tag
+      var tag = '#timer-btn-' + id
+      console.log('behaviour2!')
+      // Configure click
+      if (!AUX[id].isRunning()) {
+        timer.start({
+          callback: function (timer) {
+            $('#timer-btn-' + id + ' .pdx-timer-clock').html(
+              '+' + timer.toString(timeFormat(timer))
+            );
+          }
+        });
+      }
+    }
+
+    function setUpTimer(id) {
+
+      AUX[id] = new Timer()
+
+      var timer = AUX[id]
+
+      var tag = '#timer-btn-' + id
+
+
+      // Configure collapse.
+      $(tag).on('show.bs.collapse', function (e) {
+          if (!$(this).hasClass('counting')) {
+              $(this).addClass('counting') // toggleClass
+              e.preventDefault()
+          }
+      })
+
+      // enable reset
+      $(tag + ' .btn-removed').on('click', function (event) {
+          // Remover listeners
+          // Set time to 00:00
+          console.log(id)
+          AUX[id].stop()
+          delete AUX[id]
+          console.log("Removed click!")
+          AUX[id] = new Timer()
+          $('#timer-btn-' + id + ' .pdx-timer-clock').html('00:00')
+          $('#timer-btn-' + id).removeClass('counting')
+            //AUX[id].stop()
+            //if (t.isRunning()) {
+                // open modal
+                   // do you want to reset
+             //   t.stop()
+           // }
+            event.preventDefault()
+            event.stopPropagation()
+      })
+
+      // enable reset
+      $(tag + ' .btn-back').on('click', function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+      })
+
+
+      // Configure click
+      $(tag).on( "click", function( event ) {
+          console.log("Button click!")
+          /*
+          let obj = $('#timer-btn-'+id)
+          if (!obj.attr('active')) {
+              console.log('nop!')
+              event.stopPropagation()
+              event.preventDefault()
+              return false;
+
+          }*/
+
+          // If no active
+            // set active
+            // prevent default
+
+          // else
+            // drop down
+
+          $(tag).removeClass('btn-idle')
+          $(tag).addClass('btn-success')
+
+          // Incubating should be put always. when going
+          // to zero changes
+          $(tag + ' .pdx-timer-label').html('Incubating')
+
+          //if (!$(this).hasClass('counting')) {
+
+          // The timer might be not running because it finished.
+          // Run a new timer on the other direction? Until infinite?
+          // Pending reset
+          if (!AUX[id].isRunning()) {
+              timer.start({
+                  countdown: true,
+                  startValues: { seconds: 10 },
+                  //target: { seconds: -10},
+                  callback: function (timer) {
+                      // Update clock
+                      $('#timer-btn-' + id + ' .pdx-timer-clock').html(
+                          timer.toString(['minutes', 'seconds'])
+                      );
+
+                      // Change color
+                      if (timer.seconds < 40) {
+                          if ($(tag).hasClass('btn-success')) {
+                              $(tag).removeClass('btn-success')
+                              $(tag).addClass('btn-warning')
+                              // if sound on
+                                // play sound
+                          }
+                      }
+                      if (timer.seconds < 30) {
+                          if ($(tag).hasClass('btn-warning')) {
+                              $(tag).removeClass('btn-warning')
+                              $(tag).addClass('btn-danger')
+                              // if sound on
+                                // play sound
+                          }
+                      }
+
+                      // Change label and behaviour
+                      if (timer.seconds == 0) {
+                          // if sound on
+                                // play sound
+                          // Change label
+                          $(tag + ' .pdx-timer-label').html('Remove')
+                          // New behaviour
+                          AUX[id].stop()
+                          behaviour2(id)
+                      }
+                  }
+              });
+          }
+      });
+    }
+
+    var AUX = {
+
+    }
+
+    $(document).ready(function() {
+
+      behaviour1(0)
+      setUpTimer(1)
+      setUpTimer(2)
+      setUpTimer(3)
+      setUpTimer(4)
+
+
+
+                   //console.log('in')
+           //e.preventDefault()
+           //console.log('1.', $(this).hasClass('active'))
+          //$(this).toggle('active')
+          //if (!$(this).hasClass('active')) {
+          //  e.preventDefault();
+         // }
+          //$(this).toggle('active')
+
+      /*
+      var timer1 = new Timer();
+      timer1.start({callback: function (timer) {
+        $('#timer-btn-1 .pdx-timer-clock').html(
+            timer1.getTimeValues().toString(['minutes', 'seconds'])
+        );
+      }});
+      */
+
+        /*
+      var timer2 = new Timer();
+      $('#timer-btn-2').click(function () {
+
+        timer2.start({
+            countdown: true,
+            startValues: { minutes: 30 },
+            callback: function (timer) {
+                console.log(timer)
+              $('#timer-btn-2 .pdx-timer-clock').html(
+                timer.toString(['minutes', 'seconds'])
+              );
+            }
+        });
+      });*/
+
+
+      //var timer4 = new Timer();
+      //var timer3 = new Timer();
+
+
+      /*$('#timer-btn-4').click(function () {
+          // Only start once!
+          // Do not uncollapse!
+          timer4.start();
+      });*/
+
+      /*
+      $('#chronoExample .pauseButton').click(function () {
+          timer.pause();
+      });
+
+      $('#chronoExample .stopButton').click(function () {
+          timer.stop();
+      });
+
+      $('#chronoExample .resetButton').click(function () {
+          timer.reset();
+      });*/
+
+      /*timer4.addEventListener('secondsUpdated', function (e) {
+          $('#timer-btn-4 .pdx-timer-clock').html(
+              timer4.getTimeValues().toString(['minutes', 'seconds'])
+          )
+      });*/
+
+      /*
+      timer.addEventListener('started', function (e) {
+          $('#chronoExample .values').html(timer.getTimeValues().toString());
+      });
+
+      timer.addEventListener('reset', function (e) {
+          $('#chronoExample .values').html(timer.getTimeValues().toString());
+      });*/
+
+        //$('#timer-btn-4 .pdx-timer-clock').html(1)
+
+    });
+
+
+  </script>
+
+
+
+  <!--
+  <script src="js/main.js"></script>
+
+  <script>
+
+    // .. note: This is to avoid querying to the database
+    //          all the time. We have a local variable and
+    //          the database will be queried less.
+
+    // Local profile variable
+    var PROFILE = null;
+
+    $(document).ready(function() {
+
+      // Create database if it does not exist
+      createDatabase(reset=false).then(function(result) {
+        getProfile(1).then( function (result) {
+          // Load profile from DB
+          PROFILE = result;
+          // Populate timers
+          populateTimers();
+        })
+      })
+
+    });
+
+  </script>
+  -->
+</body>
+</html>

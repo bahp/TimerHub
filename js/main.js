@@ -7,6 +7,13 @@ window.onload = () => {
   }
 }
 
+  var MESSAGES = {
+      labelRemove: "Remove",
+      labelIncubating: "Incubating",
+      messageIncomplete: "Incubation might not be complete.",
+      messagePastTime: "Panel incubated significantly past set time. Remove panel from heat block and see IFU."
+  }
+
 
   // -----------------------------------------------------------
   // Constants
