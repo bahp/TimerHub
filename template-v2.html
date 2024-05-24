@@ -97,6 +97,25 @@
     </div>
 
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop"
+       data-bs-backdrop="static" data-bs-keyboard="false"
+       tabindex="-1" aria-labelledby="staticBackdropLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          Do you want to reset the timer?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button id='rem' type="button" class="btn btn-danger" data-bs-dismiss="modal"> Yes </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!--
     <div class="row">
       <i class="fa fa-cog" aria-hidden="true"></i>
@@ -240,7 +259,7 @@
       <!-- Timer 1           -->
       <!-- ----------------- -->
 
-      <button id="timer-btn-1" type="button"
+      <button id="timer-btn-1" data-pdx-id=1 type="button"
               class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
               data-bs-toggle="collapse" data-bs-target="#collapse-1"
               aria-expanded="false" aria-controls="collapse-1">
@@ -256,16 +275,14 @@
 
         <!-- content -->
         <div class="collapse w-100" id="collapse-1">
-          <div class="text-start pt-2 pb-2">
-            <span class="fw-bold">Caution:</span>
-            <span></span>
-          </div>
+          <div class="pdx-timer-message"></div>
           <div class="d-flex w-100">
             <div class="flex-grow-1 p-1">
               <a class="btn btn-back rounded-5 w-100">Back</a>
             </div>
             <div class="flex-grow-1 p-1">
-              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -274,7 +291,7 @@
       <!-- ----------------- -->
       <!-- Timer 2           -->
       <!-- ----------------- -->
-      <button id="timer-btn-2" type="button"
+      <button id="timer-btn-2" data-pdx-id=2 type="button"
               class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
               data-bs-toggle="collapse" data-bs-target="#collapse-2"
               aria-expanded="false" aria-controls="collapse-2">
@@ -290,16 +307,14 @@
 
         <!-- content -->
         <div class="collapse w-100" id="collapse-2">
-          <div class="text-start pt-2 pb-2">
-            <span class="fw-bold">Caution:</span>
-            <span></span>
-          </div>
+          <div class="pdx-timer-message"></div>
           <div class="d-flex w-100">
             <div class="flex-grow-1 p-1">
               <a class="btn btn-back rounded-5 w-100">Back</a>
             </div>
             <div class="flex-grow-1 p-1">
-              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -309,7 +324,7 @@
       <!-- ----------------- -->
       <!-- Timer 3           -->
       <!-- ----------------- -->
-      <button id="timer-btn-3" type="button"
+      <button id="timer-btn-3" data-pdx-id=3 type="button"
               class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
               data-bs-toggle="collapse" data-bs-target="#collapse-3"
               aria-expanded="false" aria-controls="collapse-3">
@@ -325,16 +340,14 @@
 
         <!-- content -->
         <div class="collapse w-100" id="collapse-3">
-          <div class="text-start pt-2 pb-2">
-            <span class="fw-bold">Caution:</span>
-            <span></span>
-          </div>
+          <div class="pdx-timer-message"></div>
           <div class="d-flex w-100">
             <div class="flex-grow-1 p-1">
               <a class="btn btn-back rounded-5 w-100">Back</a>
             </div>
             <div class="flex-grow-1 p-1">
-              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -345,7 +358,7 @@
       <!-- Timer 4           -->
       <!-- ----------------- -->
       <div id="wrapper">
-      <button id="timer-btn-4" type="button"
+      <button id="timer-btn-4" data-pdx-id=4 type="button"
               class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
               data-bs-toggle="collapse" data-bs-target="#collapse-4"
               aria-expanded="false" aria-controls="collapse-4">
@@ -361,16 +374,14 @@
 
         <!-- content -->
         <div class="collapse w-100" id="collapse-4">
-          <div class="text-start pt-2 pb-2">
-            <span class="fw-bold">Caution:</span>
-            <span></span>
-          </div>
+          <div class="pdx-timer-message"></div>
           <div class="d-flex w-100">
             <div class="flex-grow-1 p-1">
               <a class="btn btn-back rounded-5 w-100">Back</a>
             </div>
             <div class="flex-grow-1 p-1">
-              <a class="btn btn-removed rounded-5 w-100">Removed</a>
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -380,6 +391,12 @@
     </div> <!-- Heat Block -->
 
   </div> <!-- Container -->
+
+<!--
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+-->
 
 
   <script src="js/main.js"></script>
@@ -461,21 +478,184 @@
        *          hour has passed.
        **/
      // Add timer to variable
-      var timer = new Timer()
-      AUX[id] = timer
+      newTimer(id)
+      var timer = AUX[id]
       // Create tag
-      var tag = '#timer-btn-' + id
+      var obj = $('#timer-btn-' + id)
       console.log('behaviour2!')
       // Configure click
       if (!AUX[id].isRunning()) {
         timer.start({
           callback: function (timer) {
-            $('#timer-btn-' + id + ' .pdx-timer-clock').html(
+            obj.find('.pdx-timer-clock').html(
               '+' + timer.toString(timeFormat(timer))
             );
+            obj.find('.pdx-timer-message').html(
+              MESSAGES.messagePastTime
+            )
+            timerPastTime($('timer-btn-'+id))
           }
         });
       }
+    }
+
+    function behaviour3(id) {
+      /**
+       * Counts downs till 0.
+       **/
+      newTimer(id)
+      var timer = AUX[id]
+      var obj = $('#timer-btn-' + id)
+
+      // Pending reset
+      timer.start({
+        countdown: true,
+        startValues: { seconds: 10 },
+        callback: function (timer) {
+
+          // Update clock
+          obj.find('.pdx-timer-clock').html(
+            timer.toString(['minutes', 'seconds'])
+          )
+
+          // Remove idle
+          if (obj.hasClass('btn-idle'))
+              obj.removeClass('btn-idle')
+
+          // Configure timer visual states
+          if (timer.seconds >= 8)
+            timerSuccess(obj)
+          if (timer.seconds < 8)
+            timerWarning(obj)
+          if (timer.seconds < 4) {
+            timerDanger(obj)
+          }
+          if (timer.seconds == 0) {
+              if ($('#heat-block-bell').is(":checked"))
+                sound3.play()
+              obj.find('.pdx-timer-label').html('Remove')
+              behaviour2(id)
+          }
+        }
+      });
+    }
+
+
+    function newTimer(id) {
+      if (AUX[id] !== undefined) {
+        AUX[id].stop()
+        delete AUX[id]
+        AUX[id] = new Timer()
+      }
+    }
+
+    function stopSound(s) {
+      s.pause()
+      s.currentTime = 0
+    }
+
+    $('#sample-prep-bell').on('click', function (e) {
+      /* Silence sound for simple preparation timer */
+      if (!$(this).is(":checked"))
+        stopSound(sound0)
+    })
+
+    $('#heat-block-bell').on('click', function (e) {
+      /* Sillence sounds for heat block timers */
+      if (!$(this).is(":checked")) {
+        stopSound(sound1)
+        stopSound(sound2)
+        stopSound(sound3)
+      }
+    })
+
+    $('[id^=timer-btn-]').on('show.bs.collapse', function (e) {
+      /* Disable dropdown if timer not counting */
+      if (!$(this).hasClass('counting')) {
+        $(this).addClass('counting')
+        e.preventDefault()
+      }
+    })
+
+    $('.btn-back').on('click', function (event) {
+      /* Disable button back click (handled by boostrap) */
+      event.preventDefault()
+      event.stopPropagation()
+    })
+
+    // move the show.bs.collapse outside
+
+    function timerReset(obj) {
+      /* Reset timer style */
+      obj.removeClass('btn-success')
+      obj.removeClass('btn-warning')
+      obj.removeClass('btn-danger')
+      obj.removeClass('btn-idle')
+    }
+
+    function timerSuccess(obj) {
+      /* Set <success> timer style */
+      obj.addClass('btn-success')
+      obj.find('.pdx-timer-label').html('Incubating')
+      obj.find('.pdx-timer-message').html(MESSAGES.messageIncomplete)
+    }
+
+    function timerWarning(obj) {
+      /* Set <warning> timer style */
+      if (obj.hasClass('btn-success')) {
+        obj.removeClass('btn-success')
+        obj.addClass('btn-warning')
+        obj.find('.pdx-timer-label').html('Incubating')
+        obj.find('.pdx-timer-message').html(MESSAGES.messageIncomplete)
+        if ($('#heat-block-bell').is(":checked"))
+          sound1.play()
+      }
+    }
+
+    function timerDanger(obj) {
+      /* Set <danger> timer style */
+      if (obj.hasClass('btn-warning')) {
+        obj.removeClass('btn-warning')
+        obj.addClass('btn-danger')
+        obj.find('.pdx-timer-label').html('Incubating')
+        obj.find('.pdx-timer-message').html(MESSAGES.messageReaching)
+        if ($('#heat-block-bell').is(":checked"))
+          sound2.play()
+      }
+    }
+
+    function timerPastTime(obj) {
+      /* Set <pasttime> timer style */
+      obj.removeClass('btn-warning')
+      obj.removeClass('btn-success')
+      obj.removeClass('btn-danger')
+      obj.addClass('btn-idle')
+      obj.find('.pdx-timer-label').html('Remove')
+      obj.find('.pdx-timer-message').html(MESSAGES.messagePastTime)
+    }
+
+    function timerIdle(obj) {
+      /* Set <idle> timer style */
+      obj.removeClass('btn-success')
+      obj.removeClass('btn-warning')
+      obj.removeClass('btn-danger')
+      obj.removeClass('counting')
+      obj.addClass('btn-idle')
+      obj.find('.pdx-timer-clock').html('00:00')
+      obj.find('.pdx-timer-label').html('Start')
+    }
+
+
+
+
+    const myAlert = async(message) => {
+       return new Promise((resolve) => {
+         $('#rem').off()
+         $('#rem').on('click', function (event) {
+          console.log("Now you can remove!")
+          resolve()
+        })
+      });
     }
 
     function setUpTimer(id) {
@@ -488,209 +668,77 @@
 
 
       // Configure collapse.
-      $(tag).on('show.bs.collapse', function (e) {
-          if (!$(this).hasClass('counting')) {
-              $(this).addClass('counting') // toggleClass
-              e.preventDefault()
-          }
-      })
+      //$(tag).on('show.bs.collapse', function (e) {
+      //    if (!$(this).hasClass('counting')) {
+      //        $(this).addClass('counting') // toggleClass
+      //        e.preventDefault()
+      //    }
+      //})
 
       // enable reset
       $(tag + ' .btn-removed').on('click', function (event) {
-          // Remover listeners
-          // Set time to 00:00
-          console.log(id)
+        (async function() {
+          await myAlert('Hello there');
+          console.log("stopping timer...", id)
+          console.log(AUX[id])
           AUX[id].stop()
           delete AUX[id]
-          console.log("Removed click!")
           AUX[id] = new Timer()
-          $('#timer-btn-' + id + ' .pdx-timer-clock').html('00:00')
-          $('#timer-btn-' + id).removeClass('counting')
-            //AUX[id].stop()
+          timerIdle($(tag))
+        })();
+
+
             //if (t.isRunning()) {
                 // open modal
                    // do you want to reset
              //   t.stop()
            // }
-            event.preventDefault()
-            event.stopPropagation()
+          event.preventDefault()
+          event.stopPropagation()
       })
 
-      // enable reset
-      $(tag + ' .btn-back').on('click', function (event) {
-        event.preventDefault()
-        event.stopPropagation()
-      })
 
 
       // Configure click
       $(tag).on( "click", function( event ) {
           console.log("Button click!")
-          /*
-          let obj = $('#timer-btn-'+id)
-          if (!obj.attr('active')) {
-              console.log('nop!')
-              event.stopPropagation()
-              event.preventDefault()
-              return false;
 
-          }*/
+        var t = AUX[id]
 
-          // If no active
-            // set active
-            // prevent default
+        console.log(t.isRunning())
 
-          // else
-            // drop down
+        // if timer counting
+        if (t.isRunning())
+          return
 
-          $(tag).removeClass('btn-idle')
-          $(tag).addClass('btn-success')
+        // if timer not counting
+          // start counting
+          // prevent default
 
-          // Incubating should be put always. when going
-          // to zero changes
-          $(tag + ' .pdx-timer-label').html('Incubating')
 
-          //if (!$(this).hasClass('counting')) {
+        //$(tag).removeClass('btn-idle')
+        //$(tag).addClass('btn-success')
 
-          // The timer might be not running because it finished.
-          // Run a new timer on the other direction? Until infinite?
-          // Pending reset
-          if (!AUX[id].isRunning()) {
-              timer.start({
-                  countdown: true,
-                  startValues: { seconds: 10 },
-                  //target: { seconds: -10},
-                  callback: function (timer) {
-                      // Update clock
-                      $('#timer-btn-' + id + ' .pdx-timer-clock').html(
-                          timer.toString(['minutes', 'seconds'])
-                      );
+        // Incubating should be put always. when going
+        // to zero changes
+        //$(tag + ' .pdx-timer-label').html('Incubating')
 
-                      // Change color
-                      if (timer.seconds < 40) {
-                          if ($(tag).hasClass('btn-success')) {
-                              $(tag).removeClass('btn-success')
-                              $(tag).addClass('btn-warning')
-                              // if sound on
-                                // play sound
-                          }
-                      }
-                      if (timer.seconds < 30) {
-                          if ($(tag).hasClass('btn-warning')) {
-                              $(tag).removeClass('btn-warning')
-                              $(tag).addClass('btn-danger')
-                              // if sound on
-                                // play sound
-                          }
-                      }
+        //if (!$(this).hasClass('counting')) {
 
-                      // Change label and behaviour
-                      if (timer.seconds == 0) {
-                          // if sound on
-                                // play sound
-                          // Change label
-                          $(tag + ' .pdx-timer-label').html('Remove')
-                          // New behaviour
-                          AUX[id].stop()
-                          behaviour2(id)
-                      }
-                  }
-              });
-          }
+       behaviour3(id)
       });
     }
 
-    var AUX = {
-
-    }
+    // Initialise
+    var AUX = {}
 
     $(document).ready(function() {
-
       behaviour1(0)
       setUpTimer(1)
       setUpTimer(2)
       setUpTimer(3)
       setUpTimer(4)
-
-
-
-                   //console.log('in')
-           //e.preventDefault()
-           //console.log('1.', $(this).hasClass('active'))
-          //$(this).toggle('active')
-          //if (!$(this).hasClass('active')) {
-          //  e.preventDefault();
-         // }
-          //$(this).toggle('active')
-
-      /*
-      var timer1 = new Timer();
-      timer1.start({callback: function (timer) {
-        $('#timer-btn-1 .pdx-timer-clock').html(
-            timer1.getTimeValues().toString(['minutes', 'seconds'])
-        );
-      }});
-      */
-
-        /*
-      var timer2 = new Timer();
-      $('#timer-btn-2').click(function () {
-
-        timer2.start({
-            countdown: true,
-            startValues: { minutes: 30 },
-            callback: function (timer) {
-                console.log(timer)
-              $('#timer-btn-2 .pdx-timer-clock').html(
-                timer.toString(['minutes', 'seconds'])
-              );
-            }
-        });
-      });*/
-
-
-      //var timer4 = new Timer();
-      //var timer3 = new Timer();
-
-
-      /*$('#timer-btn-4').click(function () {
-          // Only start once!
-          // Do not uncollapse!
-          timer4.start();
-      });*/
-
-      /*
-      $('#chronoExample .pauseButton').click(function () {
-          timer.pause();
-      });
-
-      $('#chronoExample .stopButton').click(function () {
-          timer.stop();
-      });
-
-      $('#chronoExample .resetButton').click(function () {
-          timer.reset();
-      });*/
-
-      /*timer4.addEventListener('secondsUpdated', function (e) {
-          $('#timer-btn-4 .pdx-timer-clock').html(
-              timer4.getTimeValues().toString(['minutes', 'seconds'])
-          )
-      });*/
-
-      /*
-      timer.addEventListener('started', function (e) {
-          $('#chronoExample .values').html(timer.getTimeValues().toString());
-      });
-
-      timer.addEventListener('reset', function (e) {
-          $('#chronoExample .values').html(timer.getTimeValues().toString());
-      });*/
-
-        //$('#timer-btn-4 .pdx-timer-clock').html(1)
-
     });
-
 
   </script>
 

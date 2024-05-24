@@ -7,11 +7,13 @@ window.onload = () => {
   }
 }
 
+
   var MESSAGES = {
       labelRemove: "Remove",
       labelIncubating: "Incubating",
-      messageIncomplete: "Incubation might not be complete.",
-      messagePastTime: "Panel incubated significantly past set time. Remove panel from heat block and see IFU."
+      messageIncomplete: "<strong>Caution</strong> Incubation might not be complete.",
+      messageReaching: "<strong>Caution</strong> Incubation is almost complete.",
+      messagePastTime: "<strong>Caution</strong> Panel incubated significantly past set time. Remove panel from heat block and see IFU."
   }
 
 
@@ -19,6 +21,7 @@ window.onload = () => {
   // Constants
   // -----------------------------------------------------------
   // Sounds
+  var sound0 = new Audio('./audio/mixkit-clear-announce-tones-2861.wav')
   var sound1 = new Audio('./audio/mixkit-clear-announce-tones-2861.wav')
   var sound2 = new Audio('./audio/mixkit-happy-bells-notification-937.wav')
   var sound3 = new Audio('./audio/mixkit-urgent-simple-tone-loop-2976.wav')
@@ -37,10 +40,30 @@ window.onload = () => {
     },
   ]*/
 
+  // Add for each timer
+  //sound_at: {
+  //  50: sound1,
+  //  30: sound2,
+  //  10: sound3
+ // }
+
   const DEFAULT_DATA = [
     { id: 1,
       name: 'default',
-      config: {},
+      config: {
+        text: {
+          labels: {
+
+          },
+          messages: {
+
+          }
+        },
+        periods: {
+          sp: 60,
+          hb: 60*25
+        }
+      },
       timers: {
         0: { name: 0, duration: 1, date: null, interval: null},
         1: { name: 1, duration: 2, date: null, interval: null},
