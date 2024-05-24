@@ -1,6 +1,6 @@
 {
-  "name": "Hello World",
-  "short_name": "Hello",
+  "name": "TimerHub",
+  "short_name": "TimerHub",
   "icons": [{
     "src": "images/hello-icon-128.png",
       "sizes": "128x128",
@@ -25,9 +25,19 @@
       "src": "images/hello-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }],
+    },
+   {
+      "src": "images/log-pdx.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+   },
+   {
+      "src": "images/log-pdx.png",
+      "sizes": "any",
+      "type": "image/png"
+   }],
   "lang": "en-US",
-  "start_url": "/index.html",
+  "start_url": "/index-v2.html",
   "display": "standalone",
   "background_color": "white",
   "theme_color": "white"
