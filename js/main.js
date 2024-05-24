@@ -63,8 +63,8 @@ window.onload = () => {
           }
         },
         periods: {
-          sp: 60,
-          hb: 60*25
+          sp: 60,   // 60 seconds
+          hb: 1*60 // 25 minutes
         }
       },
       timers: {

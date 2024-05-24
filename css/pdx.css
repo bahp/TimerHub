@@ -6,13 +6,13 @@
     --pdx-yellow-2: #ffdf95;
     --pdx-red-1: #d94444;
     --pdx-red-2: #df7e7e;
-    --pdf-red-3: #f2cbcb;
-    --pdf-gray-1: #707070;
-    --pdf-gray-2: #8b8b8b;
-    --pdf-gray-3: #cbcbcb;
-    --pdf-gray-4: #efefef;
-    --pdf-black: #292929;
-    --pdf-white: #ffffff;
+    --pdx-red-3: #f2cbcb;
+    --pdx-gray-1: #707070;
+    --pdx-gray-2: #8b8b8b;
+    --pdx-gray-3: #cbcbcb;
+    --pdx-gray-4: #efefef;
+    --pdx-black: #292929;
+    --pdx-white: #ffffff;
 
 
     --color-green: #009944;
@@ -36,6 +36,16 @@
     position: absolute;
     transform: translateX(-50%);
 }
+
+.bi-volume-up-fill {
+    color: var(--color-green);
+}
+
+.bi-volume-off-fill {
+    color: var(--pdx-gray-2);
+    padding-right: 9px;
+}
+
 
 .btn-warning {
     background-color: var(--color-yellow);
@@ -185,6 +195,17 @@
 
 .icon-sound-on {
 
+}
+
+.form-switch {
+    transform: scale(1.8);
+    margin-right: 20px;
+    padding-top: 5px;
+}
+
+.form-check-input:checked {
+    background-color: var(--pdx-green-1);
+    border-color: var(--pdx-green-1);
 }
 
 .pdx-title {

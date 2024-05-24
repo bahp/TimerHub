@@ -97,7 +97,7 @@
 
 
 
-  <!-- Modal -->
+  <!-- Modal I -->
   <div class="modal fade" id="staticBackdrop"
        data-bs-backdrop="static" data-bs-keyboard="false"
        tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -113,6 +113,111 @@
         </div>
       </div>
     </div>
+  </div>
+
+
+  <!-- Offcanvas right -->
+  <div class="offcanvas offcanvas-end" tabindex="-1"
+       id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel" class="pdx-title">Settings</h5>
+      <button type="button" class="btn-close text-reset"
+              data-bs-dismiss="offcanvas" aria-label="Close">
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="text-start pb-3">
+        Select default time for sample preparation and incubation
+      </div>
+
+      <div class="text-start pdx-title pb-3">
+        Sample Preparation
+      </div>
+
+      <div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="timesp" id="sp30" value="30">
+          <label class="form-check-label" for="sp30">30s</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="timesp" id="sp60" value="60" checked>
+          <label class="form-check-label" for="sp60">60s</label>
+        </div>
+      </div>
+
+      <div class="text-start pdx-title pt-3">
+        Heat block
+      </div>
+
+      <form id="time-heat-block">
+        <fieldset>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb1" value="1" checked>
+            <label class="form-check-label" for="hb15">1m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb15" value="15">
+            <label class="form-check-label" for="hb15">15m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb20" value="20">
+            <label class="form-check-label" for="hb20">20m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb25" value="25">
+            <label class="form-check-label" for="hb20">25m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb30" value="30">
+            <label class="form-check-label" for="hb30">30m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb35" value="35">
+            <label class="form-check-label" for="hb35">35m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb40" value="40">
+            <label class="form-check-label btn btn-success" for="hb40">40m</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="timehb" id="hb45" value="45">
+            <label class="form-check-label btn btn-success" for="hb45">45m</label>
+          </div>
+        </fieldset>
+      </form>
+
+
+      <!--
+      <div>
+        <input type="radio" class="btn btn-check"
+               name="options" id="option1" autocomplete="off" checked>
+        <label class="btn btn-success" for="option1">30s</label>
+
+        <input type="radio" class="btn-check btn-idle"
+               name="options" id="option2" autocomplete="off">
+        <label class="btn btn-idle" for="option2">60s</label>
+      </div>
+
+      <div>
+        <input type="radio" class="btn-check" name="options"
+               id="option3" autocomplete="off" disabled>
+        <label class="btn btn-success" for="option3">Disabled</label>
+
+        <input type="radio" class="btn-check" name="options"
+               id="option4" autocomplete="off">
+        <label class="btn btn-idle" for="option4">Radio</label>
+
+         <input type="radio" class="btn-check" name="options"
+               id="option4" autocomplete="off">
+        <label class="btn btn-idle" for="option4">Radio</label>
+
+        <input type="radio" class="btn-check" name="options"
+               id="option4" autocomplete="off">
+        <label class="btn btn-idle" for="option4">Radio</label>
+      </div>
+      -->
+    </div>
+   ss
   </div>
 
     <!--
@@ -170,7 +275,11 @@
           </a>
         </div>
         <div class="flex-grow-1 text-end">
-          <a class="icon-gear" href="#">
+          <a class="icon-gear"
+              data-bs-toggle="offcanvas"
+              href="#offcanvasRight"
+              role="button"
+              aria-controls="offcanvasRight">
             <!--<i class="fas fa-bell fa-2x"></i>-->
             <h1><i class="bi bi-gear-fill"></i></h1>
             <!--<h1><i class="bi bi-gear"></i></h1>-->
@@ -178,6 +287,7 @@
         </div>
       </div>
     </div>
+
 
     <!-- ----------------- -->
     <!-- Logo              -->
@@ -198,15 +308,15 @@
         <div class="p-2 bd-highlight">
           <h3 class="pdx-title mb-0"> Sample Preparation</h3>
         </div>
-        <div class="p-2 bd-highlight">
+        <div class="p-2 bd-highlight align-middle">
           <div class="form-check form-switch">
             <input id="sample-prep-bell"
                    class="form-check-input"
                    type="checkbox"
                    role="switch"
-                   name="bell">
+                   name="bell" checked>
             <label class="form-check-label" for="sample-prep-bell">
-              <i class="mt-1 fas fa-bell"></i>
+              <i class="bi bi-volume-up-fill"></i>
             </label>
           </div>
         </div>
@@ -246,9 +356,11 @@
                    class="form-check-input"
                    type="checkbox"
                    role="switch"
-                   name="bell">
+                   name="bell"
+                   checked>
             <label class="form-check-label" for="heat-block-bell">
-              <i class="mt-1 fas fa-bell"></i>
+              <i class="bi bi-volume-up-fill"></i>
+              <!--<h1><i class="bi bi-volume-off-fill"></i></h1>-->
             </label>
           </div>
         </div>
@@ -762,7 +874,7 @@
         console.log("clicked button to start/dropdown timer")
         if (PROFILE.timers[id].date == null) {
           setTimerDate(id, new Date().getTime(), true) // update db
-          behaviour3(id, 10)
+          behaviour3(id, PROFILE.timers[id].duration)
         }
         //if (PROFILE.timers[id].timer == null) {
         //  PROFILE.timers[id].date = new Date()
@@ -888,11 +1000,31 @@
       });
     }
 
+    /**
+    // Enable radio button
+    $('#time-heat-block input').on('change', function() {
+      var val = $('input[name="timehb"]:checked').val();
+      //console.log(val)
+      //PROFILE.config.periods.hb = Number(val) * 60;
+
+      for (const [key, value] of Object.entries(PROFILE.timers)) {
+        if (key > 0) {
+          value.duration = Number(val) * 60;
+        }
+      }
+      updateProfile(PROFILE)
+    });
+    **/
+
+
+
     // Initialise
     var AUX = {}
 
+    // Local variables
     var _TIMERS = {}
 
+    // On document ready
     $(document).ready(function() {
 
       // Create database if it does not exist
@@ -900,13 +1032,7 @@
         getProfile(1).then( function (result) {
           // Load profile from DB
           PROFILE = result;
-          // Populate timers
-          //behaviour1(0)
-          //setUpTimer(1)
-          //setUpTimer(2)
-          //setUpTimer(3)
-          //setUpTimer(4)
-
+          // Initialise
           behaviour1(0)
           setUpTimerFromDB(1)
           setUpTimerFromDB(2)
