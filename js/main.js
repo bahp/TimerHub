@@ -53,10 +53,13 @@ window.onload = () => {
       config: {
         text: {
           labels: {
-
+            remove: 'Remove',
+            incubating: 'Incubating'
           },
           messages: {
-
+            incomplete: "<strong>Caution</strong> Incubation might not be complete.",
+            reaching: "<strong>Caution</strong> Incubation is almost complete.",
+            pastTime: "<strong>Caution</strong> Panel incubated significantly past set time. Remove panel from heat block and see IFU."
           }
         },
         periods: {
@@ -65,10 +68,11 @@ window.onload = () => {
         }
       },
       timers: {
-        0: { name: 0, duration: 1, date: null, interval: null},
-        1: { name: 1, duration: 2, date: null, interval: null},
-        2: { name: 2, duration: 1, date: null, interval: null},
-        3: { name: 3, duration: 1, date: null, interval: null}
+        0: { name: 0, duration: 10, date: null, interval: null, timer: null},
+        1: { name: 1, duration: 10, date: null, interval: null, timer: null},
+        2: { name: 2, duration: 10, date: null, interval: null, timer: null},
+        3: { name: 3, duration: 10, date: null, interval: null, timer: null},
+        4: { name: 4, duration: 10, date: null, interval: null, timer: null}
       }
     }
   ]

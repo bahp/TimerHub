@@ -39,6 +39,8 @@
         crossorigin="anonymous">
   -->
 
+  <!-- Option 1: Include in HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"/>
@@ -162,12 +164,16 @@
       <div class="d-flex">
         <div class="flex-grow-1 text-start">
           <a class="icon-faq" href="#">
-            <i class="fas fa-bell fa-2x"></i>
+            <!--<i class="fas fa-bell fa-2x"></i>-->
+            <h1><i class="bi bi-question-circle"></i></h1>
+            <!--<h1><i class="bi-question-circle-fill"></i></h1>-->
           </a>
         </div>
         <div class="flex-grow-1 text-end">
           <a class="icon-gear" href="#">
-            <i class="fas fa-bell fa-2x"></i>
+            <!--<i class="fas fa-bell fa-2x"></i>-->
+            <h1><i class="bi bi-gear-fill"></i></h1>
+            <!--<h1><i class="bi bi-gear"></i></h1>-->
           </a>
         </div>
       </div>
@@ -279,7 +285,9 @@
             </div>
             <div class="flex-grow-1 p-1">
               <a class="btn btn-removed rounded-5 w-100"
-                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
+                 data-pdx-id="1"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -311,7 +319,9 @@
             </div>
             <div class="flex-grow-1 p-1">
               <a class="btn btn-removed rounded-5 w-100"
-                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
+                 data-pdx-id="2"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -344,7 +354,9 @@
             </div>
             <div class="flex-grow-1 p-1">
               <a class="btn btn-removed rounded-5 w-100"
-                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
+                 data-pdx-id="3"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -378,7 +390,9 @@
             </div>
             <div class="flex-grow-1 p-1">
               <a class="btn btn-removed rounded-5 w-100"
-                 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Removed</a>
+                 data-pdx-id="4"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
             </div>
           </div>
         </div>
@@ -414,6 +428,25 @@
     }*/
 
 
+    function setTimerDate(id, value, updateDB) {
+      PROFILE.timers[id].date = value
+      if (updateDB)
+        updateProfile(PROFILE)
+    }
+
+
+    function getOrCreateTimer(id, reset) {
+      if (reset)
+        if (_TIMERS[id] != null) {
+          _TIMERS[id].stop()
+          delete _TIMERS[id]
+        }
+      if (_TIMERS[id] == null)
+        _TIMERS[id] = new Timer()
+      return _TIMERS[id]
+    }
+
+
     function prepend(value, array) {
       var newArray = array.slice();
       newArray.unshift(value);
@@ -438,7 +471,7 @@
        **/
       // Add timer to variable
       var timer = new Timer()
-      AUX[id] = timer
+      _TIMERS[id] = timer
       // Create tag
       var tag = '#timer-btn-' + id
 
@@ -447,7 +480,7 @@
         $(tag).removeClass('btn-idle')
         $(tag).addClass('btn-success')
 
-        if (!AUX[id].isRunning()) {
+        if (!_TIMERS[id].isRunning()) {
           timer.start({
             countdown: true,
             startValues: { seconds: 60 },
@@ -465,7 +498,7 @@
       });
     }
 
-    function behaviour2(id) {
+    function behaviour2(id, seconds) {
       /**
        * Counts from zero until infinity. It adds a + before
        * the time; that is, +00:25.
@@ -475,39 +508,62 @@
        *          hour has passed.
        **/
      // Add timer to variable
-      newTimer(id)
-      var timer = AUX[id]
+      //newTimer(id)
+      //var timer = PROFILE.timers[id].timer
+      //console.log(PROFILE.timers[id])
+
+      // Get start value
+      //var now = new Date().getTime()
+      //var ini = PROFILE.timers[id].date
+      //var distance = Math.floor((now - (ini + 10*1000)) / 1000) // seconds
+      //console.log(distance)
+
+      console.log('['+ id +'] behaviour2', seconds)
+      // Reset timer
+      var timer = getOrCreateTimer(id, true)
+
       // Create tag
       var obj = $('#timer-btn-' + id)
-      console.log('behaviour2!')
+
+      //var timer = new Timer()
+
       // Configure click
-      if (!AUX[id].isRunning()) {
+      if (!timer.isRunning()) {
         timer.start({
+          startValues: { seconds: seconds },
+          targetValues: { seconds: Infinity},
           callback: function (timer) {
             obj.find('.pdx-timer-clock').html(
               '+' + timer.toString(timeFormat(timer))
             );
             obj.find('.pdx-timer-message').html(
-              MESSAGES.messagePastTime
+              PROFILE.config.text.messages.pastTime
             )
-            timerPastTime($('timer-btn-'+id))
+            timerPastTime(obj)
           }
         });
       }
     }
 
-    function behaviour3(id) {
+    function behaviour3(id, seconds) {
       /**
        * Counts downs till 0.
        **/
-      newTimer(id)
-      var timer = AUX[id]
+      //newTimer(id)
+
+      //PROFILE.timers[id].date = new Date().getTime()
+      //updateProfile(PROFILE)
+
+      var timer = getOrCreateTimer(id)
       var obj = $('#timer-btn-' + id)
+
+      // Log information
+      console.log('['+id+'] behaviour3', seconds, timer)
 
       // Pending reset
       timer.start({
         countdown: true,
-        startValues: { seconds: 10 },
+        startValues: { seconds: seconds },
         callback: function (timer) {
 
           // Update clock
@@ -531,7 +587,7 @@
               if ($('#heat-block-bell').is(":checked"))
                 sound3.play()
               obj.find('.pdx-timer-label').html('Remove')
-              behaviour2(id)
+              behaviour2(id, 0)
           }
         }
       });
@@ -539,10 +595,10 @@
 
 
     function newTimer(id) {
-      if (AUX[id] !== undefined) {
-        AUX[id].stop()
-        delete AUX[id]
-        AUX[id] = new Timer()
+      if (_TIMERS[id] !== null) {
+        _TIMERS[id].stop()
+        delete _TIMERS[id]
+        TIMERS[id] = new Timer()
       }
     }
 
@@ -568,10 +624,13 @@
 
     $('[id^=timer-btn-]').on('show.bs.collapse', function (e) {
       /* Disable dropdown if timer not counting */
+      console.log("handling collapse....")
       if (!$(this).hasClass('counting')) {
+        console.log("it does not have counting!")
         $(this).addClass('counting')
         e.preventDefault()
       }
+      console.log('it had counting!')
     })
 
     $('.btn-back').on('click', function (event) {
@@ -583,7 +642,7 @@
     // move the show.bs.collapse outside
 
     function timerReset(obj) {
-      /* Reset timer style */
+      /* Reset style */
       obj.removeClass('btn-success')
       obj.removeClass('btn-warning')
       obj.removeClass('btn-danger')
@@ -591,14 +650,14 @@
     }
 
     function timerSuccess(obj) {
-      /* Set <success> timer style */
+      /* Set timer style */
       obj.addClass('btn-success')
       obj.find('.pdx-timer-label').html('Incubating')
       obj.find('.pdx-timer-message').html(MESSAGES.messageIncomplete)
     }
 
     function timerWarning(obj) {
-      /* Set <warning> timer style */
+      /* Set timer style */
       if (obj.hasClass('btn-success')) {
         obj.removeClass('btn-success')
         obj.addClass('btn-warning')
@@ -610,7 +669,7 @@
     }
 
     function timerDanger(obj) {
-      /* Set <danger> timer style */
+      /* Set timer style */
       if (obj.hasClass('btn-warning')) {
         obj.removeClass('btn-warning')
         obj.addClass('btn-danger')
@@ -622,17 +681,17 @@
     }
 
     function timerPastTime(obj) {
-      /* Set <pasttime> timer style */
+      /* Set timer style */
       obj.removeClass('btn-warning')
       obj.removeClass('btn-success')
-      obj.removeClass('btn-danger')
-      obj.addClass('btn-idle')
+      obj.removeClass('btn-idle')
+      obj.addClass('btn-danger')
       obj.find('.pdx-timer-label').html('Remove')
       obj.find('.pdx-timer-message').html(MESSAGES.messagePastTime)
     }
 
     function timerIdle(obj) {
-      /* Set <idle> timer style */
+      /* Set timer style */
       obj.removeClass('btn-success')
       obj.removeClass('btn-warning')
       obj.removeClass('btn-danger')
@@ -643,6 +702,108 @@
     }
 
 
+
+   // Enable reset
+  $('[id^=timer-btn-]').find('.btn-removed')
+    .on('click', function (event) {
+
+      // Get id from element
+      var id = parseInt($(this).attr('data-pdx-id'));
+
+      (async function() {
+        await myAlert('Hello there');
+        if (_TIMERS[id] != null) {
+          getOrCreateTimer(id, true) // reset
+          setTimerDate(id, null, true) // update db
+        }
+        timerIdle($('#timer-btn-'+id))
+      })();
+
+      // Avoid collapse click
+      event.preventDefault()
+      event.stopPropagation()
+    })
+
+
+
+    function setUpTimerNew(id) {
+      /**
+       *
+       **/
+      console.log('[' + id + '] setUpTimerNew', PROFILE.timers[id])
+      // Set new date and save
+      //PROFILE.timers[id].date = new Date()
+      //PROFILE.timers[id].timer = new Timer()
+      //updateProfile(PROFILE)
+
+      var tag = '#timer-btn-' + id
+      var obj = $('#timer-btn-'+id)
+
+      /**
+      // Enable reset
+      obj.find('.btn-removed').on('click', function (event) {
+        (async function() {
+          await myAlert('Hello there');
+          if (_TIMERS[id] != null) {
+            _TIMERS[id].stop()
+            delete _TIMERS[id]
+            _TIMERS[id] = new Timer()
+          }
+          timerIdle($(tag))
+        })();
+
+        // Avoid collapse click
+        event.preventDefault()
+        event.stopPropagation()
+      })**/
+
+      // Configure click
+      obj.on( "click", function( event ) {
+        console.log("clicked button to start/dropdown timer")
+        if (PROFILE.timers[id].date == null) {
+          setTimerDate(id, new Date().getTime(), true) // update db
+          behaviour3(id, 10)
+        }
+        //if (PROFILE.timers[id].timer == null) {
+        //  PROFILE.timers[id].date = new Date()
+        //  updateProfile(PROFILE)
+        //  behaviour3(id, 10)
+        //}
+        //if (PROFILE.timers[id].timer.isRunning())
+        //  return
+        //PROFILE.timers[id].date = new Date()
+        //updateProfile(PROFILE)
+        //behaviour3(id, 10)
+      });
+    }
+
+
+    function setUpTimerFromDB(id) {
+      /**
+       *
+       */
+      console.log('[' + id + '] setUpTimerFromDB', PROFILE.timers[id])
+      // Load timer from Database
+      if (PROFILE.timers[id].date == null) {
+        setUpTimerNew(id)
+        return
+      }
+
+      $('#timer-btn-' + id).addClass('counting')
+
+      // Get start value in seconds
+      var now = new Date().getTime()          // current
+      var ini = PROFILE.timers[id].date       // start
+      var dur = PROFILE.timers[id].duration;  // seconds
+      var seconds = Math.floor((now - (ini + dur*1000)) / 1000)
+
+      // Call timer behaviour
+      if (seconds > 0 ) {
+        behaviour2(id, Math.abs(seconds))
+      } else {
+        behaviour3(id, Math.abs(seconds))
+      }
+    }
 
 
     const myAlert = async(message) => {
@@ -656,6 +817,7 @@
     }
 
     function setUpTimer(id) {
+
 
       AUX[id] = new Timer()
 
@@ -672,12 +834,12 @@
       //    }
       //})
 
+      //var obj = $('#timer-btn-' + id)
+
       // enable reset
       $(tag + ' .btn-removed').on('click', function (event) {
         (async function() {
           await myAlert('Hello there');
-          console.log("stopping timer...", id)
-          console.log(AUX[id])
           AUX[id].stop()
           delete AUX[id]
           AUX[id] = new Timer()
@@ -729,12 +891,30 @@
     // Initialise
     var AUX = {}
 
+    var _TIMERS = {}
+
     $(document).ready(function() {
-      behaviour1(0)
-      setUpTimer(1)
-      setUpTimer(2)
-      setUpTimer(3)
-      setUpTimer(4)
+
+      // Create database if it does not exist
+      createDatabase(reset=false).then(function(result) {
+        getProfile(1).then( function (result) {
+          // Load profile from DB
+          PROFILE = result;
+          // Populate timers
+          //behaviour1(0)
+          //setUpTimer(1)
+          //setUpTimer(2)
+          //setUpTimer(3)
+          //setUpTimer(4)
+
+          behaviour1(0)
+          setUpTimerFromDB(1)
+          setUpTimerFromDB(2)
+          setUpTimerFromDB(3)
+          setUpTimerFromDB(4)
+        })
+      })
+
     });
 
   </script>
