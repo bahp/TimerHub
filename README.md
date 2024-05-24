@@ -21,7 +21,7 @@ https://bahp.github.io/timerhub/
 - Access TimerHUB: TimerHub will now appear as an icon on your home screen for 
   easy access. Simply tap the icon to open the app whenever you need it.
 
-## Android:
+### Android:
 - Open TimerHube in browser.
 - Options and Set to Home Screen:
     - Tap the options menu (typically represented by three dots) located at the top 
