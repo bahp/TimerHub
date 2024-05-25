@@ -39,3 +39,10 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
+
+self.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') {
+        console.log('APP resumed');
+        window.location.reload();
+    }
+});
