@@ -1,4 +1,11 @@
 
+function updateLog(message) {
+   document.getElementById("info").innerHTML =
+      document.getElementById("info").innerHTML +
+          + ' | ' + message + ' | ' +
+          new Date().toDateString() + '<br>';
+}
+
 const getState = () => {
     if (document.visibilityState === 'hidden') {
       return 'hidden';
@@ -18,8 +25,9 @@ const getState = () => {
     const prevState = state;
     if (nextState !== prevState) {
       console.log(`State change: ${prevState} >>> ${nextState}`);
-      if (nextState == 'active')
-          location.reload();
+      updateLog(`State change: ${prevState} >>> ${nextState}`)
+      //if (nextState == 'active')
+      //    location.reload();
     }
   };
 
