@@ -5,6 +5,9 @@ var filesToCache = [
   '/app.js',
   '/favicon.ico',
   '/manifest.json',
+  '/css/pdx.css',
+  '/css/main.css',
+  '/css/bootstrap.min.css',
   '/js/bootstrap-5.3.0.min.js',
   '/js/easytimer-1.1.3.min.js',
   '/js/jquery-3.6.0.min.js',
@@ -18,7 +21,6 @@ var filesToCache = [
   '/css/main.css',
   '/css/bootstrap.min.css',
   '/js/main.js',
-  '/js/bootstrap-5.3.0.min.js',
   '/js/dexie-3.2.4.min.js',
   '/js/easytimer-1.1.3.min.js',
   '/js/jquery-3.6.0.min.js',
@@ -26,8 +28,6 @@ var filesToCache = [
   '/main.js',
   //'/js/pagecycle.js',
   '/audio/mixkit-clear-announce-tones-2861.wav',
-  '/audio/mixkit-happy-bells-notification-937.wav',
-  '/audio/mixkit-urgent-simple-tone-loop-2976.wav',
   '/images/logo-pdx.svg',
   '/images/logo-pdx.png'
  */
