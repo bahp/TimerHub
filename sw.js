@@ -44,6 +44,6 @@ self.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'visible') {
         console.log('APP resumed');
         $('#info').html('APP resumed', new Date())
-        window.location.reload();
+        //window.location.reload();
     }
 });
