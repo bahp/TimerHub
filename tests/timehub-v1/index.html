@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> TimerHUB </title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="PWA Splash">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-750x1294.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-1242x2148.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-1668x2224.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="images/splash/launch-2048x2732.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+  <link rel="mask-icon" href="images/icons/safari-pinned-tab.svg" color="#6F6F6F">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="theme-color" content="#ffffff">
+  <title>TH1</title>
+
+  <!--<meta name="apple-mobile-web-app-status-bar" content="#db4938" />-->
+  <!--
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/logo-pdx.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="TimerHub">
+  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  -->
+
+  <!--
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.2.4/dexie.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/easytimer@1.1.3/src/easytimer.min.js"></script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!--
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
+  -->
+
+  <!-- Option 1: Include in HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"/>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css"/>
+
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/moment-2.29.1.min.js"></script>
+  <script src="./js/bootstrap-5.3.0.min.js"></script>
+  <script src="./js/dexie-3.2.4.min.js"></script>
+  <script src="./js/easytimer-1.1.3.min.js"></script>
+  <!--
+  <script src="./js/pagecycle.js"></script>
+  -->
+
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/pdx.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title> TimerHub </title>
+
+</head>
+
+<body class="fullscreen"> <!-- class=@fullscreen> -->
+
+  <!--
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header d-flex w-100">
+        <div class="flex-grow-1 align-items-start">
+          <a class="navbar-brand" href="#">
+            <i class="mt-1 fas fa-bell fa-2x" area-hidden="true"></i>
+          </a>
+        </div>
+        <div class="flex-grow-1 align-items-end">
+          <a class="navbar-brand gear" href="#">
+            <i class="mt-1 fas fa-bell fa-2x" area-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  -->
+
+
+  <div class="container">
+
+    <!-- --------------------------------- -->
+    <!-- Warning message                   -->
+    <!-- --------------------------------- -->
+    <div id='warning'
+         class="alert alert-warning small mt-5 pt-1 pb-1 text-center d-none"
+         role="alert">
+      This browser doesn't support persistent data storage
+    </div>
+
+
+
+  <!-- Modal I -->
+  <div class="modal fade" id="staticBackdrop"
+       data-bs-backdrop="static" data-bs-keyboard="false"
+       tabindex="-1" aria-labelledby="staticBackdropLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          Do you want to reset the timer?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button id='rem' type="button" class="btn btn-danger" data-bs-dismiss="modal"> Yes </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ------------------------ -->
+  <!-- Offcanvas (RIGHT)        -->
+  <!-- ------------------------ -->
+  <div class="offcanvas offcanvas-end" tabindex="-1"
+       id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel" class="pdx-title">Settings</h5>
+      <button type="button" class="btn-close text-reset"
+              data-bs-dismiss="offcanvas" aria-label="Close">
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="text-start pb-3">
+        Select default time for sample preparation and incubation
+      </div>
+
+      <div class="text-start pdx-title">
+        Sample Preparation
+      </div>
+
+      <div data-toggle="buttons">
+        <label class="btn  btn-light rounded-5 mb-2">
+          <input type="radio" name="settings-sp" id="ssp30" value=30 autocomplete="off" checked> 30s
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="settings-sp" id="ssp60" value=60 autocomplete="off"> 60s
+        </label>
+      </div>
+
+      <div class="text-start pdx-title pt-3">
+        Heat block
+      </div>
+
+      <div data-toggle="buttons">
+        <label class="btn  btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb1" value=1 autocomplete="off" checked> 1m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb15" value=15 autocomplete="off"> 15m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb20" value=20 autocomplete="off"> 20m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb25" value=25 autocomplete="off"> 25m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb30" value=30 autocomplete="off"> 30m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb35" value=35 autocomplete="off"> 35m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb40" value=40 autocomplete="off"> 40m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb45" value=45 autocomplete="off"> 45m
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+    <!--
+    <div class="row">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+      <i class="fa fa-camera-retro"></i> fa-camera-retro
+      <i class="bi bi-gear"></i>
+      <i class="fa-solid fa-gear"></i>
+      <i class="mt-1 fas fa-cog"></i>
+    </div>
+    -->
+
+    <!-- ------------------- -->
+    <!-- Logo                -->
+    <!-- ------------------- -->
+    <!--<div class="row mt-5 mb-4">
+      <div class="d-flex justify-content-center">
+        <img src="./images/logo-pdx.svg" width="300"/>
+      </div>
+    </div>
+    -->
+
+    <!--
+    <i class="mt-1 fas fa-bell"></i>
+    <div class="faq">
+      <i class="mt-1 fas fa-bell fa-3x" area-hidden="true"></i>
+    </div>
+    <div class="settings">
+      <i class="mt-1 fas fa-bell fa-3x" area-hidden="true"></i>
+    </div>
+    -->
+
+    <!--
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="...">
+      </a>
+    </div>
+  </div>
+</nav>
+
+-->
+    <!-- ----------------- -->
+    <!-- Navigation bar    -->
+    <!-- ----------------- -->
+    <div class="row p-2 pt-1">
+      <div class="d-flex">
+        <div class="flex-grow-1 text-start">
+          <a class="icon-faq" href="#">
+            <!--<i class="fas fa-bell fa-2x"></i>-->
+            <h1><i class="bi bi-question-circle"></i></h1>
+            <!--<h1><i class="bi-question-circle-fill"></i></h1>-->
+          </a>
+        </div>
+        <div class="flex-grow-1 text-end">
+          <a class="icon-gear"
+              data-bs-toggle="offcanvas"
+              href="#offcanvasRight"
+              role="button"
+              aria-controls="offcanvasRight">
+            <!--<i class="fas fa-bell fa-2x"></i>-->
+            <h1><i class="bi bi-gear-fill"></i></h1>
+            <!--<h1><i class="bi bi-gear"></i></h1>-->
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ----------------- -->
+    <!-- Logo              -->
+    <!-- ----------------- -->
+    <div class="row mb-5">
+      <div class="d-flex justify-content-center">
+        <img src="./images/logo-pdx.svg" width="250">
+      </div>
+    </div>
+
+
+
+    <button class="btn btn-danger" onclick="location.reload()"></button>
+    e
+    <div id="info"></div>
+    a
+
+    <!-- --------------------------------- -->
+    <!-- First Group                       -->
+    <!-- --------------------------------- -->
+    <!-- Label -->
+    <div class="w-100">
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="p-2 bd-highlight">
+          <h3 class="pdx-title mb-0"> Sample Preparation</h3>
+        </div>
+        <div class="p-2 bd-highlight align-middle">
+          <div class="form-check form-switch">
+            <label class="form-check-label" for="sample-prep-bell">
+              <input id="sample-prep-bell"
+                     class="form-check-input"
+                     type="checkbox"
+                     role="switch"
+                     name="bell" checked>
+              <i class="bi bi-volume-up-fill"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--
+    <input type="checkbox" id="button">
+<label for="button" class="fas"></label>
+-->
+
+
+    <!-- ----------------- -->
+    <!-- Mix/Dry           -->
+    <!-- ----------------- -->
+    <button id="timer-btn-0" type="button"
+            class="btn btn-idle rounded-5 w-100 mb-2 mt-2">
+
+      <!-- header -->
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="pdx-timer-id d-none"></div>
+        <div class="pdx-timer-label"> Mix/Dry </div>
+        <div class="pdx-timer-clock flex-grow-1">
+          00:00
+        </div>
+      </div>
+
+    </button>
+
+
+    <!-- --------------------------------- -->
+    <!-- Second Group                      -->
+    <!-- --------------------------------- -->
+    <div class="w-100 mt-5">
+      <div class="d-flex justify-content-between w-100 pr-5">
+        <div class="p-2 bd-highlight pdx-title">
+          Heat Block
+        </div>
+        <div class="p-2 bd-highlight">
+          <div class="form-check form-switch">
+            <label class="form-check-label" for="heat-block-bell">
+              <input id="heat-block-bell"
+                     class="form-check-input"
+                     type="checkbox"
+                     role="switch"
+                     name="bell"
+                     checked>
+              <i class="bi bi-volume-up-fill"></i>
+              <!--<h1><i class="bi bi-volume-off-fill"></i></h1>-->
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="heat-block">
+
+      <!-- ----------------- -->
+      <!-- Timer 1           -->
+      <!-- ----------------- -->
+      <button id="timer-btn-1" data-pdx-id=1 type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-1"
+              aria-expanded="false" aria-controls="collapse-1">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 1 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-1">
+          <div class="pdx-timer-message"></div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-pdx-id="1"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <!-- ----------------- -->
+      <!-- Timer 2           -->
+      <!-- ----------------- -->
+      <button id="timer-btn-2" data-pdx-id=2 type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-2"
+              aria-expanded="false" aria-controls="collapse-2">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 2 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-2">
+          <div class="pdx-timer-message"></div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-pdx-id="2"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+
+
+      <!-- ----------------- -->
+      <!-- Timer 3           -->
+      <!-- ----------------- -->
+      <button id="timer-btn-3" data-pdx-id=3 type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-3"
+              aria-expanded="false" aria-controls="collapse-3">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 3 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-3">
+          <div class="pdx-timer-message"></div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-pdx-id="3"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+
+
+      <!-- ----------------- -->
+      <!-- Timer 4           -->
+      <!-- ----------------- -->
+      <div id="wrapper">
+      <button id="timer-btn-4" data-pdx-id=4 type="button"
+              class="btn btn-idle rounded-5 w-100 mb-2 mt-2" role="alert"
+              data-bs-toggle="collapse" data-bs-target="#collapse-4"
+              aria-expanded="false" aria-controls="collapse-4">
+
+        <!-- header -->
+        <div class="d-flex justify-content-between w-100 pr-5">
+          <div class="pdx-timer-id"> 4 </div>
+          <div class="pdx-timer-label"> Start </div>
+          <div class="pdx-timer-clock flex-grow-1">
+            00:00
+          </div>
+        </div>
+
+        <!-- content -->
+        <div class="collapse w-100" id="collapse-4">
+          <div class="pdx-timer-message"></div>
+          <div class="d-flex w-100">
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-back rounded-5 w-100">Back</a>
+            </div>
+            <div class="flex-grow-1 p-1">
+              <a class="btn btn-removed rounded-5 w-100"
+                 data-pdx-id="4"
+                 data-bs-toggle="modal"
+                 data-bs-target="#staticBackdrop">Removed</a>
+            </div>
+          </div>
+        </div>
+      </button>
+      </div>
+
+    </div> <!-- Heat Block -->
+
+  </div> <!-- Container -->
+
+<!--
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+-->
+
+
+  <script src="js/main.js"></script>
+
+  <script>
+
+
+
+
+    /*
+
+      let timer = new Timer();
+      timer.start({callback: function (timer) {
+        $('#timer-btn-'+ id + ' .pdx-timer-clock').html(
+            timer.getTimeValues().toString(['minutes', 'seconds'])
+        );
+      }});
+    }*/
+
+
+    function setTimerDate(id, value, updateDB) {
+      PROFILE.timers[id].date = value
+      if (updateDB)
+        updateProfile(PROFILE)
+    }
+
+
+    function getOrCreateTimer(id, reset) {
+      if (reset)
+        if (_TIMERS[id] != null) {
+          _TIMERS[id].stop()
+          delete _TIMERS[id]
+        }
+      if (_TIMERS[id] == null)
+        _TIMERS[id] = new Timer()
+      return _TIMERS[id]
+    }
+
+
+    function prepend(value, array) {
+      var newArray = array.slice();
+      newArray.unshift(value);
+      return newArray;
+    }
+
+    function timeFormat(timer) {
+      //if (timer.minutes > 0)
+      //    return ['minutes', 'seconds']
+      if (timer.hours > 0)
+          return ['hours', 'minutes', 'seconds']
+      if (timer.days > 0)
+          return ['days', 'hours', 'minutes', 'seconds']
+      return ['minutes', 'seconds']
+    }
+
+    function behaviour1(id) {
+      /**
+       * Counts down until it is done and then keeps the 00:00
+       * value. If clicked while counting it does nothing. If
+       * clicked while reached 00:00 starts again.
+       **/
+      // Add timer to variable
+      var timer = new Timer()
+      _TIMERS[id] = timer
+      // Create tag
+      var tag = '#timer-btn-' + id
+
+      // Configure click
+      $(tag).on( "click", function( event ) {
+        $(tag).removeClass('btn-idle')
+        $(tag).addClass('btn-success')
+
+        if (!_TIMERS[id].isRunning()) {
+          timer.start({
+            countdown: true,
+            startValues: { seconds: 60 },
+            callback: function (timer) {
+              $('#timer-btn-' + id + ' .pdx-timer-clock').html(
+                timer.toString(timeFormat(timer))
+              );
+              if (timer.seconds == 0) {
+                $(tag).removeClass('btn-success')
+                $(tag).addClass('btn-idle')
+              }
+            }
+          });
+        }
+      });
+    }
+
+    function behaviour2(id, seconds) {
+      /**
+       * Counts from zero until infinity. It adds a + before
+       * the time; that is, +00:25.
+       *
+       * .. note: Ask whether it should allow to show hours,
+       *          otherwise users won't know if more than an
+       *          hour has passed.
+       **/
+     // Add timer to variable
+      //newTimer(id)
+      //var timer = PROFILE.timers[id].timer
+      //console.log(PROFILE.timers[id])
+
+      // Get start value
+      //var now = new Date().getTime()
+      //var ini = PROFILE.timers[id].date
+      //var distance = Math.floor((now - (ini + 10*1000)) / 1000) // seconds
+      //console.log(distance)
+
+      console.log('['+ id +'] behaviour2', seconds)
+      // Reset timer
+      var timer = getOrCreateTimer(id, true)
+
+      // Create tag
+      var obj = $('#timer-btn-' + id)
+
+      //var timer = new Timer()
+
+      // Configure click
+      if (!timer.isRunning()) {
+        timer.start({
+          startValues: { seconds: seconds },
+          targetValues: { seconds: Infinity},
+          callback: function (timer) {
+            obj.find('.pdx-timer-clock').html(
+              '+' + timer.toString(timeFormat(timer))
+            );
+            obj.find('.pdx-timer-message').html(
+              PROFILE.config.text.messages.pastTime
+            )
+            timerPastTime(obj)
+          }
+        });
+      }
+    }
+
+    function behaviour3(id, seconds) {
+      /**
+       * Counts downs till 0.
+       **/
+      //newTimer(id)
+
+      //PROFILE.timers[id].date = new Date().getTime()
+      //updateProfile(PROFILE)
+
+      var timer = getOrCreateTimer(id)
+      var obj = $('#timer-btn-' + id)
+
+      // Log information
+      console.log('['+id+'] behaviour3', seconds, timer)
+
+      // Pending reset
+      timer.start({
+        countdown: true,
+        startValues: { seconds: seconds },
+        callback: function (timer) {
+
+          // Update clock
+          obj.find('.pdx-timer-clock').html(
+            timer.toString(['minutes', 'seconds'])
+          )
+
+          // Remove idle
+          if (obj.hasClass('btn-idle'))
+              obj.removeClass('btn-idle')
+
+          // Configure timer visual states
+          if (timer.seconds >= 8)
+            timerSuccess(obj)
+          if (timer.seconds < 8)
+            timerWarning(obj)
+          if (timer.seconds < 4) {
+            timerDanger(obj)
+          }
+          if (timer.seconds == 0) {
+              if ($('#heat-block-bell').is(":checked"))
+                sound3.play()
+              obj.find('.pdx-timer-label').html('Remove')
+              behaviour2(id, 0)
+          }
+        }
+      });
+    }
+
+
+    function newTimer(id) {
+      if (_TIMERS[id] !== null) {
+        _TIMERS[id].stop()
+        delete _TIMERS[id]
+        TIMERS[id] = new Timer()
+      }
+    }
+
+    function stopSound(s) {
+      s.pause()
+      s.currentTime = 0
+    }
+
+    $('#sample-prep-bell').on('click', function (e) {
+      /* Silence sound for simple preparation timer */
+      if (!$(this).is(":checked"))
+        stopSound(sound0)
+    })
+
+    $('#heat-block-bell').on('click', function (e) {
+      /* Sillence sounds for heat block timers */
+      if (!$(this).is(":checked")) {
+        stopSound(sound1)
+        stopSound(sound2)
+        stopSound(sound3)
+      }
+    })
+
+    $('[id^=timer-btn-]').on('show.bs.collapse', function (e) {
+      /* Disable dropdown if timer not counting */
+      console.log("handling collapse....")
+      if (!$(this).hasClass('counting')) {
+        console.log("it does not have counting!")
+        $(this).addClass('counting')
+        e.preventDefault()
+      }
+      console.log('it had counting!')
+    })
+
+    $('.btn-back').on('click', function (event) {
+      /* Disable button back click (handled by boostrap) */
+      event.preventDefault()
+      event.stopPropagation()
+    })
+
+    // move the show.bs.collapse outside
+
+    function timerReset(obj) {
+      /* Reset style */
+      obj.removeClass('btn-success')
+      obj.removeClass('btn-warning')
+      obj.removeClass('btn-danger')
+      obj.removeClass('btn-idle')
+    }
+
+    function timerSuccess(obj) {
+      /* Set timer style */
+      obj.addClass('btn-success')
+      obj.find('.pdx-timer-label').html('Incubating')
+      obj.find('.pdx-timer-message').html(MESSAGES.messageIncomplete)
+    }
+
+    function timerWarning(obj) {
+      /* Set timer style */
+      if (obj.hasClass('btn-success')) {
+        obj.removeClass('btn-success')
+        obj.addClass('btn-warning')
+        obj.find('.pdx-timer-label').html('Incubating')
+        obj.find('.pdx-timer-message').html(MESSAGES.messageIncomplete)
+        if ($('#heat-block-bell').is(":checked"))
+          sound1.play()
+      }
+    }
+
+    function timerDanger(obj) {
+      /* Set timer style */
+      if (obj.hasClass('btn-warning')) {
+        obj.removeClass('btn-warning')
+        obj.addClass('btn-danger')
+        obj.find('.pdx-timer-label').html('Incubating')
+        obj.find('.pdx-timer-message').html(MESSAGES.messageReaching)
+        if ($('#heat-block-bell').is(":checked"))
+          sound2.play()
+      }
+    }
+
+    function timerPastTime(obj) {
+      /* Set timer style */
+      obj.removeClass('btn-warning')
+      obj.removeClass('btn-success')
+      obj.removeClass('btn-idle')
+      obj.addClass('btn-danger')
+      obj.find('.pdx-timer-label').html('Remove')
+      obj.find('.pdx-timer-message').html(MESSAGES.messagePastTime)
+    }
+
+    function timerIdle(obj) {
+      /* Set timer style */
+      obj.removeClass('btn-success')
+      obj.removeClass('btn-warning')
+      obj.removeClass('btn-danger')
+      obj.removeClass('counting')
+      obj.addClass('btn-idle')
+      obj.find('.pdx-timer-clock').html('00:00')
+      obj.find('.pdx-timer-label').html('Start')
+    }
+
+
+
+   // Enable reset
+  $('[id^=timer-btn-]').find('.btn-removed')
+    .on('click', function (event) {
+
+      // Get id from element
+      var id = parseInt($(this).attr('data-pdx-id'));
+
+      (async function() {
+        await myAlert('Hello there');
+        if (_TIMERS[id] != null) {
+          getOrCreateTimer(id, true) // reset
+          setTimerDate(id, null, true) // update db
+        }
+        timerIdle($('#timer-btn-'+id))
+      })();
+
+      // Avoid collapse click
+      event.preventDefault()
+      event.stopPropagation()
+    })
+
+
+
+    function setUpTimerNew(id) {
+      /**
+       *
+       **/
+      console.log('[' + id + '] setUpTimerNew', PROFILE.timers[id])
+      // Set new date and save
+      //PROFILE.timers[id].date = new Date()
+      //PROFILE.timers[id].timer = new Timer()
+      //updateProfile(PROFILE)
+
+      var tag = '#timer-btn-' + id
+      var obj = $('#timer-btn-'+id)
+
+      /**
+      // Enable reset
+      obj.find('.btn-removed').on('click', function (event) {
+        (async function() {
+          await myAlert('Hello there');
+          if (_TIMERS[id] != null) {
+            _TIMERS[id].stop()
+            delete _TIMERS[id]
+            _TIMERS[id] = new Timer()
+          }
+          timerIdle($(tag))
+        })();
+
+        // Avoid collapse click
+        event.preventDefault()
+        event.stopPropagation()
+      })**/
+
+      // Configure click
+      obj.on( "click", function( event ) {
+        console.log("clicked button to start/dropdown timer")
+        if (PROFILE.timers[id].date == null) {
+          setTimerDate(id, new Date().getTime(), true) // update db
+          behaviour3(id, PROFILE.timers[id].duration)
+        }
+        //if (PROFILE.timers[id].timer == null) {
+        //  PROFILE.timers[id].date = new Date()
+        //  updateProfile(PROFILE)
+        //  behaviour3(id, 10)
+        //}
+        //if (PROFILE.timers[id].timer.isRunning())
+        //  return
+        //PROFILE.timers[id].date = new Date()
+        //updateProfile(PROFILE)
+        //behaviour3(id, 10)
+      });
+    }
+
+
+    function setUpTimerFromDB(id) {
+      /**
+       *
+       */
+      console.log('[' + id + '] setUpTimerFromDB', PROFILE.timers[id])
+      // Load timer from Database
+      if (PROFILE.timers[id].date == null) {
+        setUpTimerNew(id)
+        return
+      }
+
+      $('#timer-btn-' + id).addClass('counting')
+
+      // Get start value in seconds
+      var now = new Date().getTime()          // current
+      var ini = PROFILE.timers[id].date       // start
+      var dur = PROFILE.timers[id].duration;  // seconds
+      var seconds = Math.floor((now - (ini + dur*1000)) / 1000)
+
+      // Call timer behaviour
+      if (seconds > 0 ) {
+        behaviour2(id, Math.abs(seconds))
+      } else {
+        behaviour3(id, Math.abs(seconds))
+      }
+    }
+
+
+    const myAlert = async(message) => {
+       return new Promise((resolve) => {
+         $('#rem').off()
+         $('#rem').on('click', function (event) {
+          console.log("Now you can remove!")
+          resolve()
+        })
+      });
+    }
+
+    function setUpTimer(id) {
+
+
+      AUX[id] = new Timer()
+
+      var timer = AUX[id]
+
+      var tag = '#timer-btn-' + id
+
+
+      // Configure collapse.
+      //$(tag).on('show.bs.collapse', function (e) {
+      //    if (!$(this).hasClass('counting')) {
+      //        $(this).addClass('counting') // toggleClass
+      //        e.preventDefault()
+      //    }
+      //})
+
+      //var obj = $('#timer-btn-' + id)
+
+      // enable reset
+      $(tag + ' .btn-removed').on('click', function (event) {
+        (async function() {
+          await myAlert('Hello there');
+          AUX[id].stop()
+          delete AUX[id]
+          AUX[id] = new Timer()
+          timerIdle($(tag))
+        })();
+
+
+            //if (t.isRunning()) {
+                // open modal
+                   // do you want to reset
+             //   t.stop()
+           // }
+          event.preventDefault()
+          event.stopPropagation()
+      })
+
+
+
+      // Configure click
+      $(tag).on( "click", function( event ) {
+          console.log("Button click!")
+
+        var t = AUX[id]
+
+        console.log(t.isRunning())
+
+        // if timer counting
+        if (t.isRunning())
+          return
+
+        // if timer not counting
+          // start counting
+          // prevent default
+
+
+        //$(tag).removeClass('btn-idle')
+        //$(tag).addClass('btn-success')
+
+        // Incubating should be put always. when going
+        // to zero changes
+        //$(tag + ' .pdx-timer-label').html('Incubating')
+
+        //if (!$(this).hasClass('counting')) {
+
+       behaviour3(id)
+      });
+    }
+
+    /**
+    // Enable radio button
+    $('#time-heat-block input').on('change', function() {
+      var val = $('input[name="timehb"]:checked').val();
+      //console.log(val)
+      //PROFILE.config.periods.hb = Number(val) * 60;
+
+      for (const [key, value] of Object.entries(PROFILE.timers)) {
+        if (key > 0) {
+          value.duration = Number(val) * 60;
+        }
+      }
+      updateProfile(PROFILE)
+    });
+    **/
+
+
+
+    // Initialise
+    var AUX = {}
+
+    // Local variables
+    var _TIMERS = {}
+
+    // On document ready
+    $(document).ready(function() {
+
+      // Create database if it does not exist
+      createDatabase(reset=false).then(function(result) {
+        getProfile(1).then( function (result) {
+          // Load profile from DB
+          PROFILE = result;
+          // Initialise
+          behaviour1(0)
+          setUpTimerFromDB(1)
+          setUpTimerFromDB(2)
+          setUpTimerFromDB(3)
+          setUpTimerFromDB(4)
+        })
+      })
+
+    });
+
+  </script>
+
+
+
+  <!--
+  <script src="js/main.js"></script>
+
+  <script>
+
+    // .. note: This is to avoid querying to the database
+    //          all the time. We have a local variable and
+    //          the database will be queried less.
+
+    // Local profile variable
+    var PROFILE = null;
+
+    $(document).ready(function() {
+
+      // Create database if it does not exist
+      createDatabase(reset=false).then(function(result) {
+        getProfile(1).then( function (result) {
+          // Load profile from DB
+          PROFILE = result;
+          // Populate timers
+          populateTimers();
+        })
+      })
+
+    });
+
+  </script>
+  -->
+</body>
+</html>
