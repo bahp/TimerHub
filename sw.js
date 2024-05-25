@@ -13,6 +13,7 @@ var filesToCache = [
   '/js/easytimer-1.1.3.min.js',
   '/js/jquery-3.6.0.min.js',
   '/js/moment-2.29.1.min.js',
+  '/js/pagecycle.js',
   '/audio/mixkit-clear-announce-tones-2861.wav',
   '/audio/mixkit-happy-bells-notification-937.wav',
   '/audio/mixkit-urgent-simple-tone-loop-2976.wav',
