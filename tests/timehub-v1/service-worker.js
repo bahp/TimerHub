@@ -11,9 +11,6 @@ var filesToCache = [
   '/js/bootstrap-5.3.0.min.js',
   '/js/easytimer-1.1.3.min.js',
   '/js/jquery-3.6.0.min.js',
-  '/audio/mixkit-clear-announce-tones-2861.wav',
-  '/audio/mixkit-happy-bells-notification-937.wav',
-  '/audio/mixkit-urgent-simple-tone-loop-2976.wav',
 ];
 
 /*
@@ -30,6 +27,9 @@ var filesToCache = [
   '/audio/mixkit-clear-announce-tones-2861.wav',
   '/images/logo-pdx.svg',
   '/images/logo-pdx.png'
+  '/audio/mixkit-clear-announce-tones-2861.wav',
+  '/audio/mixkit-happy-bells-notification-937.wav',
+  '/audio/mixkit-urgent-simple-tone-loop-2976.wav',
  */
 
 
