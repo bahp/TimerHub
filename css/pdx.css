@@ -30,6 +30,53 @@
     --color-black: #292929;
 }
 
+
+#button {
+  display: none;
+}
+
+#button + label:before {
+  content: "a"; /* Bars */
+}
+
+#button:checked + label:before {
+  content: "b";
+}
+
+
+label:has(input[type="checkbox"]:checked) i {
+    color:var(--pdx-green-1);
+}
+
+input[type="checkbox"] {
+  /*position: fixed;
+  opacity: 0;
+  pointer-events: none;*/
+}
+
+
+/* Radio element, when checked */
+input[type="radio"] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type="radio"]:checked {
+  box-shadow: 0 0 0 3px orange;
+    color: green;
+    background-color: green;
+}
+
+label:has(input[type="radio"]) {
+    width: 180px;
+}
+
+label:has(input[type="radio"]:checked) {
+    background: var(--pdx-green-1);
+    color: var(--pdx-white);
+}
+
 .logo {
     top: 50px;
     left: 50%;
@@ -38,13 +85,15 @@
 }
 
 .bi-volume-up-fill {
-    color: var(--color-green);
+    color: var(--pdx-gray-1);
 }
 
+
+/*
 .bi-volume-off-fill {
     color: var(--pdx-gray-2);
     padding-right: 9px;
-}
+}*/
 
 .btn-warning {
     background-color: var(--color-yellow);

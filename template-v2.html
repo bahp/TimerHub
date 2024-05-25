@@ -116,7 +116,9 @@
   </div>
 
 
-  <!-- Offcanvas right -->
+  <!-- ------------------------ -->
+  <!-- Offcanvas (RIGHT)        -->
+  <!-- ------------------------ -->
   <div class="offcanvas offcanvas-end" tabindex="-1"
        id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -130,92 +132,50 @@
         Select default time for sample preparation and incubation
       </div>
 
-      <div class="text-start pdx-title pb-3">
+      <div class="text-start pdx-title">
         Sample Preparation
       </div>
 
-      <div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="timesp" id="sp30" value="30">
-          <label class="form-check-label" for="sp30">30s</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="timesp" id="sp60" value="60" checked>
-          <label class="form-check-label" for="sp60">60s</label>
-        </div>
+      <div data-toggle="buttons">
+        <label class="btn  btn-light rounded-5 mb-2">
+          <input type="radio" name="settings-sp" id="ssp30" value=30 autocomplete="off" checked> 30s
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="settings-sp" id="ssp60" value=60 autocomplete="off"> 60s
+        </label>
       </div>
 
       <div class="text-start pdx-title pt-3">
         Heat block
       </div>
 
-      <form id="time-heat-block">
-        <fieldset>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb1" value="1" checked>
-            <label class="form-check-label" for="hb15">1m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb15" value="15">
-            <label class="form-check-label" for="hb15">15m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb20" value="20">
-            <label class="form-check-label" for="hb20">20m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb25" value="25">
-            <label class="form-check-label" for="hb20">25m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb30" value="30">
-            <label class="form-check-label" for="hb30">30m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb35" value="35">
-            <label class="form-check-label" for="hb35">35m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb40" value="40">
-            <label class="form-check-label btn btn-success" for="hb40">40m</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="timehb" id="hb45" value="45">
-            <label class="form-check-label btn btn-success" for="hb45">45m</label>
-          </div>
-        </fieldset>
-      </form>
-
-
-      <!--
-      <div>
-        <input type="radio" class="btn btn-check"
-               name="options" id="option1" autocomplete="off" checked>
-        <label class="btn btn-success" for="option1">30s</label>
-
-        <input type="radio" class="btn-check btn-idle"
-               name="options" id="option2" autocomplete="off">
-        <label class="btn btn-idle" for="option2">60s</label>
+      <div data-toggle="buttons">
+        <label class="btn  btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb1" value=1 autocomplete="off" checked> 1m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb15" value=15 autocomplete="off"> 15m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb20" value=20 autocomplete="off"> 20m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb25" value=25 autocomplete="off"> 25m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb30" value=30 autocomplete="off"> 30m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb35" value=35 autocomplete="off"> 35m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb40" value=40 autocomplete="off"> 40m
+        </label>
+        <label class="btn btn-light rounded-5 mb-2">
+          <input type="radio" name="options" id="shb45" value=45 autocomplete="off"> 45m
+        </label>
       </div>
 
-      <div>
-        <input type="radio" class="btn-check" name="options"
-               id="option3" autocomplete="off" disabled>
-        <label class="btn btn-success" for="option3">Disabled</label>
-
-        <input type="radio" class="btn-check" name="options"
-               id="option4" autocomplete="off">
-        <label class="btn btn-idle" for="option4">Radio</label>
-
-         <input type="radio" class="btn-check" name="options"
-               id="option4" autocomplete="off">
-        <label class="btn btn-idle" for="option4">Radio</label>
-
-        <input type="radio" class="btn-check" name="options"
-               id="option4" autocomplete="off">
-        <label class="btn btn-idle" for="option4">Radio</label>
-      </div>
-      -->
     </div>
   </div>
 
@@ -309,18 +269,24 @@
         </div>
         <div class="p-2 bd-highlight align-middle">
           <div class="form-check form-switch">
-            <input id="sample-prep-bell"
-                   class="form-check-input"
-                   type="checkbox"
-                   role="switch"
-                   name="bell" checked>
             <label class="form-check-label" for="sample-prep-bell">
+              <input id="sample-prep-bell"
+                     class="form-check-input"
+                     type="checkbox"
+                     role="switch"
+                     name="bell" checked>
               <i class="bi bi-volume-up-fill"></i>
             </label>
           </div>
         </div>
       </div>
     </div>
+
+
+    <!--
+    <input type="checkbox" id="button">
+<label for="button" class="fas"></label>
+-->
 
 
     <!-- ----------------- -->
@@ -351,13 +317,13 @@
         </div>
         <div class="p-2 bd-highlight">
           <div class="form-check form-switch">
-            <input id="heat-block-bell"
-                   class="form-check-input"
-                   type="checkbox"
-                   role="switch"
-                   name="bell"
-                   checked>
             <label class="form-check-label" for="heat-block-bell">
+              <input id="heat-block-bell"
+                     class="form-check-input"
+                     type="checkbox"
+                     role="switch"
+                     name="bell"
+                     checked>
               <i class="bi bi-volume-up-fill"></i>
               <!--<h1><i class="bi bi-volume-off-fill"></i></h1>-->
             </label>
